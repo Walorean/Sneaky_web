@@ -1,0 +1,233 @@
+﻿body, html{
+    height: 100%;
+    margin:0;
+    font-family: Inter, sans-serif;
+}
+
+.header{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    align-items:center;
+    padding:10px 40px;
+    background:#4C3C6B;
+}
+
+.header h1{
+    color:white;
+    font-size:25px;
+    width:100%
+}
+
+.header a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.search_box {
+    display:flex;
+    justify-self:center;
+}
+
+#search{
+    width:400px;
+    background:#fff;
+    padding:10px;
+    border:2px solid #312E33;
+}
+
+#search_button{
+    background:#A70FEB;
+    width:50px;
+    border:2px solid #312E33;
+    cursor:pointer;
+    transition: 0.2s;
+}
+
+#search_button:hover{
+    background:#912CC0;
+}
+
+.main_buttons{
+    display:flex;
+    gap:10px;
+    justify-self:end;
+}
+
+.main_buttons button{
+    background: #a60fe9;
+    width:40px;
+    height:40px;
+    border:2px solid #312E33;
+    cursor:pointer;
+    transition: 0.2s;
+}
+
+.main_buttons button:hover{
+    background: #912cc0;
+}
+
+.navbar{
+    display:flex;
+    justify-content:center;
+    background:#4C3C6B;
+    padding:10px;
+}
+
+.navbar_buttons{
+    display:flex;
+    gap:10px;
+}
+
+.navbar button{
+    background:#A70FEB;
+    border:2px solid #312E33;
+    color:white;
+    padding:10px 20px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+.navbar button:hover{
+    background:#912CC0;
+}
+
+.hero-ad{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("assets/sneaker_men.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 300px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.arrows{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,0.7);
+    cursor:pointer;
+    font-size:20px;
+}
+
+.arrows.right-arrow{
+    right:15px;
+}
+
+.arrows.left-arrow{
+    left:15px;
+}
+
+.dots{
+    position:absolute;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    background:#bbb;
+    border-radius:50%;
+}
+
+.dot.active_dot{
+    background:white;
+}
+
+#men_main{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    padding:40px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+#men_main_picture{
+    width:100%;
+    height:auto;
+}
+
+#women_main{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    padding:40px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+#women_main_picture{
+    width:100%;
+    height:auto;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+    gap:20px;
+    width: 100%;
+}
+
+.product-card{
+    width:100%;
+    transition:0.2s;
+}
+
+.product-card:hover{
+    transform:scale(1.05);
+    cursor:pointer;
+}
+
+.product-image-box{
+    background: #9b9b9b;
+    border-radius:10px;
+    padding:20px;
+    text-align:center;
+}
+
+.product-image-box img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+}
+
+.product-info{
+    display:flex;
+    justify-content:space-between;
+    margin-top:8px;
+}
+
+.product-name{
+    font-weight:bold;
+}
+
+.product-price{
+    font-weight:bold;
+}
+
+
+.footer{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    background:#9b9b9b;
+    padding:20px;
+    color:white;
+    gap:30px;
+}
+
+.footer div{
+    justify-self:start;
+}
+.footer h3{
+    text-align:center;
+}
