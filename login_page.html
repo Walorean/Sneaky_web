@@ -1,10 +1,94 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNEAKYZZ</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-$END$
+<section class="header_container">
+    <div class="header">
+        <a href="index.html"><h1>SNEAKYZZ</h1></a>
+        <div class = "search_box">
+            <input type="text" id="search" placeholder="Search product...">
+            <button id="search_button">🔍</button>
+        </div>
+        <div class="main_buttons">
+            <button id="likes">❤️</button>
+            <button id="cart">🛒</button>
+            <button id="my_profile" onclick="location.href='login_page.html'">👤</button>
+        </div>
+    </div>
+    <div class="navbar">
+        <div class="navbar_buttons">
+            <button><strong>NEW</strong></button>
+            <button><strong>MEN</strong></button>
+            <button><strong>WOMEN</strong></button>
+            <button><strong>SPORT</strong></button>
+        </div>
+    </div>
+</section>
+<section class= "sign_in_container">
+  <div class="sign_in_l_side">
+    <h2><strong>Sign in:</strong></h2>
+    <div class="sign_in_email_container">
+      <div class="enter_email_text">Enter email:</div>
+      <input type="text" id="email_sign" placeholder="Email...">
+    </div>
+    <div>
+      <div class="enter_password_text">Enter password:</div>
+      <input type="text" id="password_sign" placeholder="Password...">
+    </div>
+    <button class="sign_in_button"><strong>Sign in</strong></button>
+  </div>
+  <div class="sign_in_r_side">
+    <div class="sign_in_register_info_container">
+      <div class= "sign_in_reg_top_container">
+        <div class="sign_in_reg_top"><strong>Register and enjoy additional benefits with us:</strong></div>
+        <div class="sign_in_reg_logo"><strong>SNEAKYZZ</strong></div>
+      </div>
+      <ul>
+                <li>Announcements about new products and collections</li>
+                <li>Cashback for purchases</li>
+                <li>Discount notifications</li>
+            </ul>
+    </div>
+    <button class="sign_in_reg_button"><strong>Register</strong></button>
+  </div>
+
+</section>
+<section class="footer_container">
+    <div class="footer">
+        <div id="about">
+            <h3>ABOUT US</h3>
+            <ul>
+                <li><strong>Yevhen Horschar - FIIT student</strong></li>
+                <li><strong>Artem Kinash - FIIT student</strong></li>
+            </ul>
+        </div>
+        <div id="resource">
+            <h3>RESOURCE</h3>
+            <ul>
+                <li><strong>BLOG</strong></li>
+                <li><strong>NEWS</strong></li>
+            </ul>
+        </div>
+        <div id="help">
+            <h3>HELP</h3>
+            <ul>
+                <li><strong>xhorshchar@stuba.sk</strong></li>
+                <li><strong>xkinash@stuba.sk</strong></li>
+            </ul>
+        </div>
+        <div id="important-info">
+            <h3>IMPORTANT INFORMATION</h3>
+            <ul>
+                <li><strong>WE CREATED OUR MAIN TITLE</strong></li>
+                <li><strong>WE CREATED LOGIN, REGISTER AND MY PROFILE</strong></li>
+            </ul>
+        </div>
+    </div>
+</section>
 </body>
 </html>
