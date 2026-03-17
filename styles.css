@@ -307,6 +307,9 @@
 .footer h3{
     text-align:center;
 }
+
+
+
 .sign_in_container{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -317,9 +320,6 @@
     border-radius:8px;
     overflow:hidden;
 }
-
-/* LEFT SIDE (SIGN IN) */
-
 .sign_in_l_side{
     padding:40px;
     background:white;
@@ -331,13 +331,11 @@
 .sign_in_l_side h2{
     margin-bottom:10px;
 }
-
 .enter_email_text,
 .enter_password_text{
     margin-bottom:5px;
     font-weight:600;
 }
-
 #email_sign,
 #password_sign{
     width:100%;
@@ -345,9 +343,6 @@
     border:2px solid #312E33;
     border-radius:4px;
 }
-
-/* SIGN IN BUTTON */
-
 .sign_in_button{
     margin-top:10px;
     padding:12px;
@@ -358,14 +353,10 @@
     border-radius:4px;
     transition:0.2s;
 }
-
 .sign_in_button:hover{
     transform:scale(1.05);
     background:#912CC0;
 }
-
-/* RIGHT SIDE (REGISTER INFO) */
-
 .sign_in_r_side{
     background:#4C3C6B;
     color:white;
@@ -374,29 +365,19 @@
     flex-direction:column;
     justify-content:space-between;
 }
-
-/* TOP REGISTER TEXT */
-
 .sign_in_reg_top_container{
     display:flex;
     justify-content:space-between;
     align-items:center;
     margin-bottom:20px;
 }
-
 .sign_in_reg_logo{
     font-size:20px;
 }
-
-/* BENEFITS LIST */
-
 .sign_in_r_side ul{
     padding-left:20px;
     line-height:1.8;
 }
-
-/* REGISTER BUTTON */
-
 .sign_in_reg_button{
     padding:12px;
     background:#A70FEB;
@@ -406,7 +387,6 @@
     border-radius:4px;
     transition:0.2s;
 }
-
 .sign_in_reg_button:hover{
     transform:scale(1.05);
     background:#912CC0;
