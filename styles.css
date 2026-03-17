@@ -10,17 +10,22 @@
     align-items:center;
     padding:10px 40px;
     background:#4C3C6B;
+    width:auto;
+}
+
+.header_container{
+    background-color:#4C3C6B;
 }
 
 .header h1{
     color:white;
     font-size:25px;
-    width:100%
 }
 
 .header a{
     text-decoration:none;
     color:inherit;
+    width:15px;
 }
 
 .search_box {
@@ -29,7 +34,8 @@
 }
 
 #search{
-    width:400px;
+    width:100%;
+    max-width:400px;
     background:#fff;
     padding:10px;
     border:2px solid #312E33;
@@ -85,6 +91,7 @@
     padding:10px 20px;
     cursor:pointer;
     border-radius:4px;
+    transition:0.2s;
 }
 
 .navbar button:hover{
@@ -127,7 +134,6 @@
     position:absolute;
     bottom:15px;
     left:50%;
-    transform:translateX(-50%);
     display:flex;
     gap:8px;
 }
@@ -173,7 +179,7 @@
 
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+    grid-template-columns:repeat(auto-fit, minmax(170px,1fr));
     gap:20px;
     width: 100%;
 }
@@ -215,6 +221,58 @@
     font-weight:bold;
 }
 
+#main_register_text{
+    text-align:center;
+}
+
+.register_forms{
+    display:flex;
+    justify-content:center;
+    padding: 0px 20px;
+}
+
+.register_form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    width:100%;
+    max-width:500px;
+    padding:30px;
+    border-radius:8px;
+}
+
+.form_group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.form_group label{
+    font-weight:bold;
+    font-size:14px;
+}
+
+.form_group input{
+    padding:10px;
+    border:2px solid #312E33;
+    border-radius:4px;
+    font-size:14px;
+}
+
+.register_button{
+    padding:12px;
+    background:#A70FEB;
+    color:white;
+    border:2px solid #312E33;
+    border-radius:4px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.register_button:hover{
+    background:#912CC0;
+}
 
 .footer{
     display:grid;
