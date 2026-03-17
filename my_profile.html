@@ -1,10 +1,106 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNEAKYZZ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
-$END$
+<section class="header_container">
+    <div class="header">
+        <a href="index.html"><h1>SNEAKYZZ</h1></a>
+        <div class = "search_box">
+            <input type="text" id="search" placeholder="Search product...">
+            <button id="search_button">🔍</button>
+        </div>
+        <div class="main_buttons">
+            <button id="likes">❤️</button>
+            <button id="cart">🛒</button>
+            <button id="my_profile" onclick="location.href='login_page.html'">👤</button>
+        </div>
+    </div>
+    <div class="navbar">
+        <div class="navbar_buttons">
+            <button><strong>NEW</strong></button>
+            <button><strong>MEN</strong></button>
+            <button><strong>WOMEN</strong></button>
+            <button><strong>SPORT</strong></button>
+        </div>
+    </div>
+</section>
+<section class="profile_container">
+  <div class="profile_l_container">
+    <h2>My Account</h2>
+    <div class = "name_box">
+        <h4>Your name:</h4>
+        <input type="text" id="name" placeholder="Yasha Lava">
+        <button id="save_change">Save change</button>
+    </div>
+    <div class = "email_box">
+        <h4>Your email:</h4>
+        <input type="text" id="email" placeholder="YashaLava@gmail.com">
+        <button id="save_change">Save change</button>
+    </div>
+    <div class = "address_box">
+        <h4>Your address:</h4>
+        <input type="text" id="address" placeholder="Example Street, 67, 67679">
+        <button id="save_change">Save change</button>
+    </div>
+    <div class = "address_box">
+        <h4>Your orders:</h4>
+        <button id="open_orders">Open</button>
+    </div>
+  </div>
+  <div class="profile_r_container">
+    <h2>Change Password</h2>
+    <div class = "current_password_box">
+        <h4>Enter current password:</h4>
+        <input type="text" id="curr_passwd" placeholder="">
+    </div>
+    <div class = "new_password_box">
+        <h4>Enter current password:</h4>
+        <input type="text" id="new_passwd" placeholder="">
+    </div>
+    <div class = "check_new_password_box">
+        <h4>Confirm your new password :</h4>
+        <input type="text" id="check_passwd" placeholder="">
+    </div>
+    <button id="password_change">Change password</button>
+  </div>
+</section>
+<section class="footer_container">
+    <div class="footer">
+        <div id="about">
+            <h3>ABOUT US</h3>
+            <ul>
+                <li><strong>Yevhen Horschar - FIIT student</strong></li>
+                <li><strong>Artem Kinash - FIIT student</strong></li>
+            </ul>
+        </div>
+        <div id="resource">
+            <h3>RESOURCE</h3>
+            <ul>
+                <li><strong>BLOG</strong></li>
+                <li><strong>NEWS</strong></li>
+            </ul>
+        </div>
+        <div id="help">
+            <h3>HELP</h3>
+            <ul>
+                <li><strong>xhorshchar@stuba.sk</strong></li>
+                <li><strong>xkinash@stuba.sk</strong></li>
+            </ul>
+        </div>
+        <div id="important-info">
+            <h3>IMPORTANT INFORMATION</h3>
+            <ul>
+                <li><strong>WE CREATED OUR MAIN TITLE</strong></li>
+                <li><strong>WE CREATED LOGIN, REGISTER AND MY PROFILE</strong></li>
+            </ul>
+        </div>
+    </div>
+</section>
 </body>
 </html>

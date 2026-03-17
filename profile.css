@@ -1,0 +1,128 @@
+.profile_container{
+     display:grid;
+    grid-template-columns:1fr 1fr;
+    max-width:1200px;
+    margin:60px auto;
+    overflow:hidden;
+}
+.profile_l_container{
+    padding:40px;
+    background:white;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.profile_r_container{
+    padding:40px;
+    background:white;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.profile_l_container h2{
+ margin-bottom:0px;
+}
+.profile_r_container h2{
+ margin-bottom:0px;
+}
+.name_box{
+    display:flex;
+    gap:10px;
+}
+.address_box{
+    display:flex;
+    gap:10px;
+}
+.email_box{
+    display:flex;
+    gap:10px;
+}
+#name,
+#email,
+#address{
+    align-self: center;
+    width:40%;
+    height:30%;
+    padding:10px;
+    border:2px solid #312E33;
+    border-radius:4px;
+}
+#save_change{
+    transition: 0.2s;
+    background: #A70FEB;
+    border:2px solid #312E33;
+    width:20%;
+    height:50%;
+    align-self: center;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+#save_change:hover{
+    background:#912CC0;
+    transform:scale(1.05);
+}
+#open_orders{
+    transition: 0.2s;
+    background: #A70FEB;
+    border:2px solid #312E33;
+    width:40%;
+    height:50%;
+    align-self: center;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+#open_orders:hover{
+    background:#912CC0;
+    transform:scale(1.05);
+}
+.check_new_password_box,
+.new_password_box,
+.current_password_box{
+    border:2px solid #312E33;
+    background-color: #4C3C6B;
+    border-radius: 8px;
+}
+
+.new_password_box h4{
+    margin:5px 10px;
+    color: white;
+}
+.current_password_box h4{
+    margin:5px 10px;
+    color: white;
+}
+.check_new_password_box h4{
+    margin:5px 10px;
+    color: white;
+}
+#check_passwd,
+#new_passwd, 
+#curr_passwd{
+    margin:auto 10px;
+    align-self: start;
+    width:90%;
+    height:15%;
+    padding:10px;
+    border:2px solid #c8c7c9;
+    border-radius:8px;
+}
+#password_change{
+    transition: 0.2s;
+    background: #A70FEB;
+    border:2px solid #312E33;
+    width:40%;
+    height:50%;
+    align-self: center;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+#password_change:hover{
+    transform:scale(1.05);
+    background:#912CC0;
+}
