@@ -1,4 +1,4 @@
-﻿﻿body, html{
+﻿body, html{
     height: 100%;
     margin:0;
     font-family: Inter, sans-serif;
@@ -39,6 +39,7 @@
     background:#fff;
     padding:10px;
     border:2px solid #312E33;
+    border-radius:8px;
 }
 
 #search_button{
@@ -47,11 +48,14 @@
     border:2px solid #312E33;
     cursor:pointer;
     transition: 0.2s;
+    border-radius:8px;
 }
 
 #search_button:hover{
     background:#912CC0;
 }
+
+/*buttons in the right top, cart, likes and my profile*/
 
 .main_buttons{
     display:flex;
@@ -66,11 +70,14 @@
     border:2px solid #312E33;
     cursor:pointer;
     transition: 0.2s;
+    border-radius:8px;
 }
 
 .main_buttons button:hover{
     background: #912cc0;
 }
+
+/*navigation bar*/
 
 .navbar{
     display:flex;
@@ -98,6 +105,8 @@
     background:#912CC0;
 }
 
+/*banner*/
+
 .hero-ad{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("assets/sneaker_men.png");
     background-size: cover;
@@ -108,6 +117,8 @@
     max-width: 1100px;
     margin: auto;
 }
+
+/*arrow buttons for banner*/
 
 .arrows{
     position:absolute;
@@ -130,6 +141,7 @@
     left:15px;
 }
 
+/*dots for banner*/
 .dots{
     position:absolute;
     bottom:15px;
@@ -148,6 +160,8 @@
 .dot.active_dot{
     background:white;
 }
+
+/*men section and image*/
 
 #men_main{
     display:grid;
@@ -177,6 +191,7 @@
     height:auto;
 }
 
+/*Product tabs*/
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(170px,1fr));
@@ -229,6 +244,8 @@
     display:flex;
     justify-content:center;
     padding: 0px 20px;
+    color: white;
+    margin: 60px auto;
 }
 
 .register_form{
@@ -239,6 +256,7 @@
     max-width:500px;
     padding:30px;
     border-radius:8px;
+    background: #4C3C6B;
 }
 
 .form_group{
@@ -277,7 +295,7 @@
 .footer{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    background:#9b9b9b;
+    background: #4b3c6a;
     padding:20px;
     color:white;
     gap:30px;
@@ -294,6 +312,7 @@
     grid-template-columns:1fr 1fr;
     max-width:900px;
     margin: 120px  auto;
+    margin:120px auto;
     border:2px solid #312E33;
     border-radius:8px;
     overflow:hidden;
