@@ -236,6 +236,7 @@
     font-weight:bold;
 }
 
+
 #main_register_text{
     text-align:center;
 }
@@ -243,9 +244,9 @@
 .register_forms{
     display:flex;
     justify-content:center;
-    padding: 0px 20px;
+    padding: 30px 20px;
     color: white;
-    margin: 60px auto;
+    margin: 10px auto;
 }
 
 .register_form{
@@ -314,7 +315,6 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     max-width:900px;
-    margin: 120px  auto;
     margin:120px auto;
     border:2px solid #312E33;
     border-radius:8px;
