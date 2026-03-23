@@ -34,35 +34,37 @@
         <section class="filters">
             <div class="filters-ad"></div>
             <div class="filter-bar">
-                <div class="filter-price">
-                    <input class="filter-price-input" type="number" placeholder="min.price" min="0">
-                    <span class="seperator">-</span>
-                    <input class="filter-price-input" type="number" placeholder="max.price" min="1">
-                    <span class="currency">€</span>
+                <div class="filter-field">
+                    <div class="filter-price">
+                        <input class="filter-price-input" type="number" placeholder="min.price" min="0">
+                        <span class="seperator">-</span>
+                        <input class="filter-price-input" type="number" placeholder="max.price" min="1">
+                        <span class="currency">€</span>
+                    </div>
+                    <span class="divider">|</span>
+                    <div class="filter-size">
+                        <input class="filter-size-input" type="number" placeholder="min.size" max="49" min="30">
+                        <span class="seperator">-</span>
+                        <input class="filter-size-input" type="number" placeholder="max.size" min="31" max="50">
+                        <span class="currency">size</span>
+                    </div>
+                    <span class="divider">|</span>
+                    <select class="brand-select">
+                        <option value="" disabled selected>-- choose brand --</option>
+                        <option>Nike</option>
+                        <option>Adidas</option>
+                        <option>Puma</option>
+                        <option>New Balance</option>
+                        <option>Reebok</option>
+                    </select>
+                    <span class="divider">|</span>
+                    <select class="sort-select">
+                        <option value="" disabled selected>-- sort by --</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                    </select>
+                    <button class="filter-btn">Filter</button>
                 </div>
-                <span class="divider">|</span>
-                <div class="filter-size">
-                    <input class="filter-size-input" type="number" placeholder="min.size" max="49" min="30">
-                    <span class="seperator">-</span>
-                    <input class="filter-size-input" type="number" placeholder="max.size" min="31" max="50">
-                    <span class="currency">size</span>
-                </div>
-                <span class="divider">|</span>
-                <select class="brand-select">
-                    <option value="" disabled selected>-- choose brand --</option>
-                    <option>Nike</option>
-                    <option>Adidas</option>
-                    <option>Puma</option>
-                    <option>New Balance</option>
-                    <option>Reebok</option>
-                </select>
-                <span class="divider">|</span>
-                <select class="sort-select">
-                    <option value="" disabled selected>-- sort by --</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                </select>
-                <button class="filter-btn">Filter</button>
             </div>
         </section>
         <section class="catalogue_products">
