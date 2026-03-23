@@ -18,22 +18,21 @@
     margin: 5px auto;
 }
 
-.filter-bar {
+.filter-field {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 6px 4px;
+    gap: 35px;
     background: #4a3c69;
     border: 1px solid #0F0F0F;
     border-radius: 8px;
     padding: 12px ;
     box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-    max-width: 80%;
-    margin: 5px auto;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .filter-size-input, .filter-price-input{
-    width: 80px;
+    width: 75px;
     background: white;
     border: 1px solid black;
     border-radius: 4px;
@@ -188,7 +187,3 @@
     cursor: pointer;
     width: 100px;
 }
-
-
-
-
