@@ -1,0 +1,88 @@
+﻿.order_body {
+    margin: 30px 60px;
+    margin-bottom: 60px;
+    font-family: Arial, sans-serif;
+}
+
+.order_container {
+    background-color: #655883;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.order_container h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.order_columns {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 1fr 1fr;
+    padding: 10px 20px;
+    border-bottom: 2px solid white;
+}
+
+.order_columns h3 {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+}
+
+.order_item_cont {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 1fr 1fr;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    align-items: center;
+}
+
+.order_item_cont h5 {
+    color: white;
+    font-weight: normal;
+    margin: 0;
+    text-align: center;
+}
+
+.order_id_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order_discription_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order_discription_cont ul {
+    margin: 0;
+    padding-left: 18px;
+    color: white;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.order_discription_cont li {
+    font-weight: normal;
+}
+
+.state_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date_created_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
