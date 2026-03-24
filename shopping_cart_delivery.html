@@ -6,6 +6,7 @@
     <title>SNEAKYZZ</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="shopping_cart.css">
+    <link rel="stylesheet" href="shopping_cart_delivery.css">
 </head>
 <body>
 <section class="header_container">
@@ -58,7 +59,65 @@
             <p>Summary</p>
         </div>
     </div>
+    <div class="delivery_cont">
+        <div class="delivery_options_body">
+            <div class="l_part_conteiner">
+                <div class="card">
+                    <h3>Vyber sposob dorucenia:</h3>
+                    <label class="option-card">
+                        <input type="radio" name="delivery" value="pickup">
+                        <div class="option-content">
+                            <div class="title">Pickup at store <span>+0€</span></div>
+                            <p>You should come to store to pickup your order</p>
+                        </div>
+                        </label>
 
+                        <label class="option-card">
+                        <input type="radio" name="delivery" value="delivery">
+                        <div class="option-content">
+                            <div class="title">Delivery to address <span>+5€</span></div>
+                            <p>Your order would be delivered to your address</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="r_part_conteiner">
+                <div class="card">
+                    <h3>Vyber sposob platby:</h3>
+                    <label class="option-card">
+                        <input type="radio" name="payment" value="card" onclick="toggleCard(true)">
+                        <div class="option-content">
+                            <div class="title">Card payment</div>
+                        </div>
+                    </label>
+                    <div id="cardForm" style="display:none;">
+                    <form>
+                        <label for="meno">Meno na karte:</label>
+                        <input type="text" id="meno" name="meno" required><br><br>
+                        <label for="cardNumber">Číslo karty:</label>
+                        <input type="text" id="cardNumber" name="cardNumber" maxlength="19" required><br><br>
+                        <label for="expiry">Dátum expirácie:</label>
+                        <input type="month" id="expiry" name="expiry" required><br><br>
+                        <label for="cvv">CVV:</label>
+                        <input type="password" id="cvv" name="cvv" maxlength="4" required><br><br>
+                    </form>
+                    </div>
+                        <label class="option-card">
+                        <input type="radio" name="payment" value="cash" onclick="toggleCard(false)">
+                        <div class="option-content">
+                            <div class="title">Cash on delivery</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="subtotal_cont">
+            <h3>Subtotal:</h3>
+            <h4>1001 €</h4>
+            <button class="next_step">Previous step</button>
+            <button class="next_step">Next step</button>
+        </div>
+    </div>
 </section>
 <section class="footer_container">
     <div class="footer">
@@ -93,4 +152,9 @@
     </div>
 </section>
 </body>
+<script>
+    function toggleCard(show) {
+        document.getElementById("cardForm").style.display = show ? "block" : "none";
+    }
+</script>
 </html>

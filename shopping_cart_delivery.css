@@ -1,0 +1,110 @@
+.delivery_options_body{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    max-width:1200px;
+    margin:60px auto;
+    overflow:hidden;
+    border:2px solid #312E33;
+    border-radius: 8px;
+}
+.l_part_conteiner,
+.r_part_conteiner{
+    padding:40px;
+    background:white;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.card{
+    background:#ffffff;
+    border:2px solid #312E33;
+    border-radius:10px;
+    padding:30px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.l_part_conteiner .card{
+    border-left:6px solid #A70FEB;
+}
+
+.r_part_conteiner .card{
+    border-left:6px solid #4C3C6B;
+}
+.option-card {
+  display: block;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+.option-card:hover {
+  border-color: #A70FEB;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.option-card input {
+  position: absolute;
+  opacity: 0;
+}
+.option-card input:checked + .option-content .title {
+  color: #A70FEB;
+}
+
+.option-content {
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.title {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.option-content p {
+  margin-top: 8px;
+  color: #666;
+  font-size: 14px;
+}
+.option-card input:checked + .option-content {
+  border: 2px solid #A70FEB;
+  background: #f7efff;
+}
+.option-card:hover {
+  transform: translateY(-2px);
+}
+input[type="text"],
+input[type="password"],
+input[type="month"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+input:focus {
+  border-color: #A70FEB;
+  outline: none;
+}
+.delivery_options_body {
+  background: white;
+}
+@media (max-width: 768px) {
+  .delivery_options_body {
+    grid-template-columns: 1fr;
+  }
+}
+.delivery_cont .subtotal_cont {
+    border: 2px solid rgb(63, 63, 63);
+  background-color: #4C3C6B;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 60px;
+
+}

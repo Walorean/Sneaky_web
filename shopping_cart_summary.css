@@ -1,0 +1,121 @@
+.cart_page .cart_container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+
+  background-color: #655883;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.cart_page .cart_container {
+  display: grid;
+  background-color: #655883;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.cart_page .cart_left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #655883;
+  border-radius: 12px;
+}
+
+.cart_page .cart_item_cont,
+.cart_page .categories_description {
+  display: grid;
+  grid-template-columns: 100px 3fr 1fr 1fr 1fr 1fr;
+  background-color: #655883;
+}
+
+.cart_page .cart_item_cont {
+  transition: 0.2s;
+}
+
+.cart_page .cart_item_cont:hover {
+  background: rgba(0,0,0,0.03);
+}
+.cart_page .item_img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.cart_page .item_text h5:first-child {
+  font-weight: bold;
+}
+.cart_page .price_cont h5,
+.cart_page .total_price_cont h5 {
+  font-weight: bold;
+}
+
+.cart_page .total_price_cont h5 {
+  color: #e7aaeb;
+}
+
+.cart_page .summary_box {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+.cart_page .summary_row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.cart_page .summary_row.total {
+  font-weight: bold;
+  font-size: 18px;
+  border-top: 2px solid #ddd;
+  padding-top: 10px;
+}
+
+.cart_page .next_step {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cart_page .next_step:first-of-type {
+  background: #ccc;
+  color: #333;
+}
+.cart_page .next_step:last-of-type {
+  background: #A70FEB;
+  color: white;
+}
+
+.cart_page .next_step:last-of-type:hover {
+  background: #cb79f1;
+}
+@media (max-width: 900px) {
+  .cart_page .cart_container {
+    grid-template-columns: 1fr;
+  }
+
+  .cart_page .summary_box {
+    position: static;
+  }
+}
+.cart_page .card_items {
+    background-color: #655883; 
+    padding: 10px;
+}
+.cart_page .cart_left h2{
+    color: white;
+    padding-left: 20px;
+    padding-top: 20px;
+}
