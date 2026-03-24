@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SNEAKYZZ</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shopping_cart.css">
+    <link rel="stylesheet" href="confirmed.css">
 </head>
 <body>
 <section class="header_container">
@@ -15,8 +17,8 @@
             <button id="search_button">🔍</button>
         </div>
         <div class="main_buttons">
-            <button id="likes">❤️</button>
-            <button id="cart">🛒</button>
+            <button id="likes" onclick="location.href='liked_page.html'">❤️</button>
+            <button id="cart" onclick="location.href='shopping_cart.html'">🛒</button>
             <button id="my_profile" onclick="location.href='login_page.html'">👤</button>
         </div>
     </div>
@@ -26,6 +28,16 @@
             <button><strong>MEN</strong></button>
             <button><strong>WOMEN</strong></button>
             <button><strong>SPORT</strong></button>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="confirm_body">
+        <h1 class="main_title">ORDER IS CONFIRMED! THANK YOU FOR USING OUR SERVICES!</h1>
+        <div class="check">✓</div>
+        <div class="button_box">
+            <button class="next_step" onclick="location.href='index.html'">RETURN TO HOME SCREEN</button>
+            <button class="next_step" onclick="location.href='my_orders.html'">TO MY ORDERS</button>
         </div>
     </div>
 </section>
