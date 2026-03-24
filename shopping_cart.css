@@ -54,7 +54,7 @@
 .cart_container h2{
     color: white;
 }
-/* HLAVIČKA TABUĽKY */
+
 .categories_description {
   display: grid;
   grid-template-columns: 80px 2fr 1fr 1fr 1fr 1fr;
@@ -67,7 +67,6 @@
   font-size: 14px;
 }
 
-/* ITEM */
 .cart_item_cont {
   display: grid;
   grid-template-columns: 80px 2fr 1fr 1fr 1fr 1fr;
@@ -76,7 +75,6 @@
   border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
-/* QUANTITY */
 .quantity_cont {
     display: flex;
    flex-direction: column;
@@ -98,7 +96,6 @@
   background: red;
 }
 
-/* ITEM DESCRIPTION */
 .item_discription_cont {
   display: flex;
   align-items: center;
@@ -112,14 +109,12 @@
   border-radius: 5px;
 }
 
-/* TEXT */
 .cart_item_cont h5 {
   margin: 0;
   color: white;
   font-weight: normal;
 }
 
-/* SUBTOTAL */
 .subtotal_cont {
   margin-top: 20px;
   display: flex;
@@ -132,8 +127,6 @@
 .subtotal_cont h4 {
   color: white;
 }
-
-/* BUTTON */
 .next_step {
   padding: 10px 20px;
   background-color: #A70FEB;
