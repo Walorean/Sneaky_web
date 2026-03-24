@@ -394,6 +394,10 @@
     background:#912CC0;
 }
 
+h1#main_register_text{
+    color: #575757;
+}
+
 @media (max-width: 900px) {
     .header {
         grid-template-columns: auto 1fr auto;
@@ -458,6 +462,11 @@
 
     .header h1 {
         font-size: 15px;
+    }
+
+    h1#main_register_text{
+        font-size: 20px;
+        gap: 16px;
     }
 
     .main_buttons button {
@@ -540,4 +549,9 @@
     .sign_in_r_side {
         padding: 24px 20px;
     }
+
+    input#email_sign, input#password_sign {
+        width: 95%;
+    }
+
 }
