@@ -107,53 +107,6 @@
     background:#912CC0;
 }
 
-@media (max-width: 900px) {
-    .header{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        padding:5px 10px;
-        gap: 5px;
-        width:100%;
-    }
-
-    .header_container{
-        width: 100%;
-    }
-
-    .header h1{
-        font-size: 15px;
-    }
-
-    .header a{
-        text-decoration: none;
-        color: black;
-    }
-}
-
-@media (max-width: 500px) {
-    .header{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        padding:5px 10px;
-        gap: 5px;
-        width:100%;
-    }
-
-    .header_container{
-        width: 100%;
-    }
-
-    .header h1{
-        font-size: 15px;
-    }
-
-    .header a{
-        text-decoration: none;
-        color: black;
-    }
-}
-
-
 /*banner*/
 
 .hero-ad{
