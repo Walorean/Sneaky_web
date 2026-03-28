@@ -398,6 +398,11 @@ h1#main_register_text{
     color: #575757;
 }
 
+.main_container h1{
+    text-align:center;
+
+}
+
 @media (max-width: 900px) {
     .header {
         grid-template-columns: auto 1fr auto;
@@ -553,5 +558,4 @@ h1#main_register_text{
     input#email_sign, input#password_sign {
         width: 95%;
     }
-
 }
