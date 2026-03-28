@@ -1,0 +1,288 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #1a1a1a;
+}
+
+.admin_body {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px 60px;
+}
+
+.admin_body h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+}
+
+/* ── Two-column layout ── */
+.admin_form_container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ── LEFT: Image Upload ── */
+.image_upload_container {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.image_upload_container > p {
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+.upload_box {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: #fafafa;
+}
+
+.upload_box:hover {
+    border-color: #A70FEB;
+    background: #faf0ff;
+}
+
+.upload_icon {
+    font-size: 32px;
+    color: #888;
+}
+
+.upload_box label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+}
+
+.upload_status {
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+}
+
+/* ── RIGHT: Form sections ── */
+.form_sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form_section {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form_section h3 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1a1a1a;
+    border-left: 4px solid #A70FEB;
+    padding-left: 10px;
+    margin-bottom: 4px;
+}
+
+/* ── Individual fields ── */
+.form_field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form_field label {
+    font-size: 12px;
+    color: #555;
+    font-weight: bold;
+}
+
+.form_field input[type="text"],
+.form_field input[type="number"],
+.form_field select,
+.form_field textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #333;
+    background: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: Arial, sans-serif;
+}
+
+.form_field input:focus,
+.form_field select:focus,
+.form_field textarea:focus {
+    outline: none;
+    border-color: #A70FEB;
+    box-shadow: 0 0 0 2px rgba(167, 15, 235, 0.15);
+    background: white;
+}
+
+.form_field textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.form_field select {
+    appearance: auto;
+    cursor: pointer;
+}
+
+.form_field small {
+    font-size: 11px;
+    color: #999;
+}
+
+/* ── Color input row ── */
+.color_input_row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color_input_row input[type="text"] {
+    flex: 1;
+}
+
+#color_picker {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 2px;
+    cursor: pointer;
+    background: white;
+}
+
+#add_color_btn {
+    width: 36px;
+    height: 36px;
+    background: #A70FEB;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#add_color_btn:hover {
+    background: #912CC0;
+    transform: scale(1.08);
+}
+
+.color_count {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* ── Action buttons ── */
+.form_buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+}
+
+.btn_create {
+    padding: 12px 28px;
+    background: #655883;
+    border: 2px solid #312E33;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn_create:hover {
+    background: #4a3c69;
+    transform: scale(1.03);
+}
+
+.btn_back {
+    padding: 12px 28px;
+    background: #888;
+    border: 2px solid #555;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn_back:hover {
+    background: #666;
+    transform: scale(1.03);
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+    .admin_form_container {
+        grid-template-columns: 1fr;
+    }
+
+    .image_upload_container {
+        max-width: 100%;
+    }
+
+    .upload_box {
+        aspect-ratio: auto;
+        height: 140px;
+    }
+
+    .form_section {
+        padding: 16px;
+    }
+
+    .form_buttons {
+        flex-direction: column;
+    }
+
+    .btn_create,
+    .btn_back {
+        width: 100%;
+        text-align: center;
+    }
+}
