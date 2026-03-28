@@ -63,7 +63,7 @@
         <div class="delivery_options_body">
             <div class="l_part_conteiner">
                 <div class="card">
-                    <h3>Vyber sposob dorucenia:</h3>
+                    <h3>Choose delivery option:</h3>
                     <label class="option-card">
                         <input type="radio" name="delivery" value="pickup">
                         <div class="option-content">
@@ -83,7 +83,7 @@
             </div>
             <div class="r_part_conteiner">
                 <div class="card">
-                    <h3>Vyber sposob platby:</h3>
+                    <h3>Choose payment type:</h3>
                     <label class="option-card">
                         <input type="radio" name="payment" value="card" onclick="toggleCard(true)">
                         <div class="option-content">
@@ -92,11 +92,11 @@
                     </label>
                     <div id="cardForm" style="display:none;">
                     <form>
-                        <label for="meno">Meno na karte:</label>
+                        <label for="meno">Name on card:</label>
                         <input type="text" id="meno" name="meno" required><br><br>
-                        <label for="cardNumber">Číslo karty:</label>
+                        <label for="cardNumber">Card number:</label>
                         <input type="text" id="cardNumber" name="cardNumber" maxlength="19" required><br><br>
-                        <label for="expiry">Dátum expirácie:</label>
+                        <label for="expiry">Expiration date:</label>
                         <input type="month" id="expiry" name="expiry" required><br><br>
                         <label for="cvv">CVV:</label>
                         <input type="password" id="cvv" name="cvv" maxlength="4" required><br><br>
@@ -112,10 +112,14 @@
             </div>
         </div>
         <div class="subtotal_cont">
-            <h3>Subtotal:</h3>
-            <h4>1001 €</h4>
-            <button class="next_step" onclick="location.href='shopping_cart.html'">Previous step</button>
-            <button class="next_step" onclick="location.href='shopping_cart_address.html'">Next step</button>
+            <div class="total_text_cont">
+                <h3>Subtotal:</h3>
+                <h4>1001 €</h4>
+            </div>
+            <div class="step_container">
+                <button class="next_step" onclick="location.href='shopping_cart.html'">Previous step</button>
+                <button class="next_step" onclick="location.href='shopping_cart_address.html'">Next step</button>
+            </div>
         </div>
     </div>
 </section>

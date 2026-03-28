@@ -95,6 +95,13 @@ input:focus {
 .delivery_options_body {
   background: white;
 }
+.total_text_cont,
+.step_container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap:20px;
+}
 @media (max-width: 768px) {
   .delivery_options_body {
     grid-template-columns: 1fr;
@@ -107,4 +114,53 @@ input:focus {
   padding: 15px;
   margin: 60px;
 
+}
+
+@media (max-width: 700px) {
+  .subtotal_cont{
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .subtotal_cont h4{
+    font-size: 12px;
+  }
+  .subtotal_cont h3{
+    font-size: 15px;
+  }
+  .next_step{
+    font-size: 12px;
+  }
+
+}
+@media (max-width: 500px) {
+  .total_text_cont,
+  .step_container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap:20px;
+  }
+  .a_box label {
+   font-size: 12px;
+  }
+.next_step{
+    padding: 0px 5px;
+    font-size: 10px;
+  }
+  .subtotal_cont{
+    gap:5px;
+    flex-direction: column;
+  }
+  .subtotal_cont h4{
+    font-size: 10px;
+  }
+  .subtotal_cont h3{
+    font-size: 12px;
+  }
+}
+@media (max-width: 300px) {
+  .next_step{
+    padding: 0px;
+  }
 }
