@@ -56,8 +56,6 @@
     background:#912CC0;
 }
 
-/*buttons in the right top, cart, likes and my profile*/
-
 .main_buttons{
     justify-self:end;
 }
@@ -107,8 +105,6 @@
     background:#912CC0;
 }
 
-/*banner*/
-
 .hero-ad{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("assets/sneaker_men.png");
     background-size: cover;
@@ -119,8 +115,6 @@
     max-width: 1100px;
     margin: auto;
 }
-
-/*arrow buttons for banner*/
 
 .arrows{
     position:absolute;
@@ -143,7 +137,6 @@
     left:15px;
 }
 
-/*dots for banner*/
 .dots{
     position:absolute;
     bottom:15px;
@@ -163,7 +156,6 @@
     background:white;
 }
 
-/*men section and image*/
 
 #men_main{
     display:grid;
@@ -193,7 +185,7 @@
     height:auto;
 }
 
-/*Product tabs*/
+
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(170px,1fr));
@@ -312,7 +304,6 @@
 }
 
 
-
 .sign_in_container{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -418,7 +409,6 @@ h1#main_register_text{
 .main_buttons button#logout:hover {
     background: #912cc0;
 }
-
 
 
 @media (max-width: 900px) {

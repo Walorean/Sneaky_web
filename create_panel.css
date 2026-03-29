@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
 }
-
 body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
@@ -90,7 +89,6 @@ body {
     text-align: center;
 }
 
-/* ── RIGHT: Form sections ── */
 .form_sections {
     display: flex;
     flex-direction: column;
@@ -116,7 +114,6 @@ body {
     margin-bottom: 4px;
 }
 
-/* ── Individual fields ── */
 .form_field {
     display: flex;
     flex-direction: column;
@@ -167,8 +164,6 @@ body {
     font-size: 11px;
     color: #999;
 }
-
-/* ── Color input row ── */
 .color_input_row {
     display: flex;
     align-items: center;
@@ -216,7 +211,6 @@ body {
     margin-top: 4px;
 }
 
-/* ── Action buttons ── */
 .form_buttons {
     display: flex;
     gap: 12px;
@@ -257,7 +251,7 @@ body {
     transform: scale(1.03);
 }
 
-/* ── Responsive ── */
+
 @media (max-width: 700px) {
     .admin_form_container {
         grid-template-columns: 1fr;

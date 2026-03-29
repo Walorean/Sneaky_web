@@ -3,9 +3,6 @@
     font-weight: bold;
     color: white;
 }
-
-
-
 .filters-ad{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("assets/sneaker_men.png");
     background-size: cover;
