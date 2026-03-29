@@ -78,16 +78,6 @@
 .option-card:hover {
   transform: translateY(-2px);
 }
-input[type="text"],
-input[type="password"],
-input[type="month"] {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  margin-top: 5px;
-}
-
 input:focus {
   border-color: #A70FEB;
   outline: none;
@@ -102,6 +92,32 @@ input:focus {
   align-items: center;
   gap:20px;
 }
+.brand-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    background: #fafafa;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: auto;
+    margin-top: 4px;
+    margin-bottom: 6px;
+}
+
+.brand-select:focus {
+    outline: none;
+    border-color: #A70FEB;
+    box-shadow: 0 0 0 2px rgba(167, 15, 235, 0.15);
+    background: white;
+}
+
+.brand-select:hover {
+    border-color: #A70FEB;
+}
+
 @media (max-width: 768px) {
   .delivery_options_body {
     grid-template-columns: 1fr;
