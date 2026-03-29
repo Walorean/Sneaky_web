@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel – Update Shoe</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="update_panel.css">
+</head>
+<body>
+<section class="header_container">
+  <div class="header">
+    <a href="index.html"><h1>SNEAKYZZ</h1></a>
+    <div class = "search_box">
+      <input type="text" id="search" placeholder="Search product...">
+      <button id="search_button">🔍</button>
+    </div>
+    <div class="main_buttons">
+      <button id="logout" onclick="location.href='login_page.html'">LOG OUT</button>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="navbar_buttons">
+      <button onclick="location.href='category_products_page.html'"><strong>NEW</strong></button>
+      <button onclick="location.href='category_products_page.html'"><strong>MEN</strong></button>
+      <button onclick="location.href='category_products_page.html'"><strong>WOMEN</strong></button>
+      <button onclick="location.href='category_products_page.html'"><strong>SPORT</strong></button>
+    </div>
+  </div>
+</section>
+<section class="main_body">
+  <h1 class="page-title">Admin Panel – Update Shoe</h1>
+
+  <div class="layout">
+
+    <!-- Left: image upload -->
+    <div class="image-upload-card">
+      <p class="card-label">Product Images <span style="font-weight:400">(Min. 2 images)</span></p>
+      <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        <span>Upload</span>
+        <input type="file" id="fileInput" accept="image/*" multiple hidden onchange="handleFileUpload(event)"/>
+      </div>
+      <p class="upload-status" id="uploadStatus">0 image(s) uploaded. Need 2 more.</p>
+      <div id="thumbs" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;"></div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="form-stack">
+
+      <!-- Basic Details -->
+      <div class="card">
+        <p class="card-title">Basic Details</p>
+
+        <div class="field">
+          <label>Product Name <span class="req">*</span></label>
+          <input type="text" placeholder="e.g., Nike Air Max 270"/>
+        </div>
+
+        <div class="field">
+          <label>Category <span class="req">*</span></label>
+          <select>
+            <option value="" disabled selected>Select category</option>
+            <option>Running</option>
+            <option>Lifestyle</option>
+            <option>Basketball</option>
+            <option>Training</option>
+            <option>Outdoor</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Basic Info</label>
+          <textarea placeholder="Basic information about these shoes…"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Product Origin Information</label>
+          <input type="text" placeholder="e.g., EuroFleet Innovations, Titanium Plaza, 86767 DE Frankfurt am Main, Germany"/>
+        </div>
+      </div>
+
+      <!-- Product Specifications -->
+      <div class="card specs">
+        <p class="card-title">Product Specifications</p>
+
+        <div class="field">
+          <label>Available Colors</label>
+          <div class="color-row">
+            <input type="text" id="colorInput" placeholder="Color name (e.g., Midnight Blue)"/>
+            <label class="color-swatch-btn">
+              <input type="color" id="colorPicker" value="#1a1a2e"/>
+            </label>
+            <button class="add-color-btn" onclick="addColor()" title="Add color">+</button>
+          </div>
+          <p class="color-count" id="colorCount">0 color(s) added</p>
+          <div class="color-tags" id="colorTags"></div>
+        </div>
+
+        <div class="field">
+          <label>Material</label>
+          <input type="text" placeholder="Basic information about material…"/>
+        </div>
+
+        <div class="field">
+          <label>Product Code</label>
+          <input type="text" placeholder="e.g., IM6002-030" style="font-family: var(--mono); font-size:.85rem;"/>
+        </div>
+      </div>
+
+      <!-- Inventory & Pricing -->
+      <div class="card">
+        <p class="card-title">Inventory &amp; Pricing</p>
+
+        <div class="field">
+          <label>Price (EUR)</label>
+          <input type="number" placeholder="129.99" step="0.01" min="0"/>
+        </div>
+
+        <div class="field">
+          <label>Available Sizes (EU)</label>
+          <input type="text" id="sizesInput" placeholder="e.g., 38, 39, 40, 41, 42, 43, 44, 45" oninput="renderStockCombos()"/>
+          <p class="hint">Separate sizes with commas</p>
+        </div>
+
+        <div class="field">
+          <label>Available Sizes (EU)</label>
+          <input type="text" placeholder="e.g., 38, 39, 40, 41, 42, 43, 44, 45"/>
+          <p class="hint">Separate sizes with commas</p>
+        </div>
+
+        <div class="field" style="margin-top:1.1rem;">
+          <label>Stock per Size &amp; Color</label>
+          <p class="hint" style="margin-bottom:.5rem;">Add colors above and enter sizes to unlock stock inputs.</p>
+
+          <div id="stockCombos">
+
+            <!-- Group 1: Midnight Black -->
+            <div class="combo-group">
+              <div class="combo-group-header">
+                <span class="combo-dot" style="background:#1a1a2e;"></span>
+                <span class="combo-group-name">Midnight Black</span>
+                <span style="font-size:.72rem;color:var(--text-placeholder);font-family:var(--mono);">3 sizes</span>
+              </div>
+              <div class="combo-rows">
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 40</span>
+                  <span class="combo-sep">·</span>
+                  <span style="flex:1;font-size:.78rem;color:var(--text-secondary);">Midnight Black</span>
+                  <input type="number" min="0" value="12"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 41</span>
+                  <span class="combo-sep">·</span>
+                  <span style="flex:1;font-size:.78rem;color:var(--text-secondary);">Midnight Black</span>
+                  <input type="number" min="0" value="8"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 42</span>
+                  <span class="combo-sep">·</span>
+                  <span style="flex:1;font-size:.78rem;color:var(--text-secondary);">Midnight Black</span>
+                  <input type="number" min="0" value="5"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Group 2: Ice Blue -->
+            <div class="combo-group">
+              <div class="combo-group-header">
+                <span class="combo-dot" style="background:#b5c4f0;"></span>
+                <span class="combo-group-name">Ice Blue</span>
+                <span style="font-size:.72rem;color:var(--text-placeholder);font-family:var(--mono);">3 sizes</span>
+              </div>
+              <div class="combo-rows">
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 40</span>
+                  <span class="combo-sep">·</span>
+                  <span style="flex:1;font-size:.78rem;color:var(--text-secondary);">Ice Blue</span>
+                  <input type="number" min="0" value="3"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 41</span>
+                  <span class="combo-sep">·</span>
+                  <span style="flex:1;font-size:.78rem;color:var(--text-secondary);">Ice Blue</span>
+                  <input type="number" min="0" value="7"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 42</span>
+                  <span class="combo-sep">·</span>
+                  <span style="flex:1;font-size:.78rem;color:var(--text-secondary);">Ice Blue</span>
+                  <input type="number" min="0" value="0"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Group 3: Chalk White -->
+            <div class="combo-group">
+              <div class="combo-group-header">
+                <span class="combo-dot" style="background:#e8e5de; border-color:#ccc;"></span>
+                <span class="combo-group-name">Chalk White</span>
+                <span style="font-size:.72rem;color:var(--text-placeholder);font-family:var(--mono);">3 sizes</span>
+              </div>
+              <div class="combo-rows">
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 40</span>
+                  <span class="combo-sep">·</span>
+                  <span style="flex:1;font-size:.78rem;color:var(--text-secondary);">Chalk White</span>
+                  <input type="number" min="0" value="6"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 41</span>
+                  <span class="combo-sep">·</span>
+                  <span style="flex:1;font-size:.78rem;color:var(--text-secondary);">Chalk White</span>
+                  <input type="number" min="0" value="9"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 42</span>
+                  <span class="combo-sep">·</span>
+                  <span style="flex:1;font-size:.78rem;color:var(--text-secondary);">Chalk White</span>
+                  <input type="number" min="0" value="4"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <p class="total-stock">Grand total: <span>54</span> units across all variants</p>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button class="btn btn-primary">Update product</button>
+        <button class="btn btn-secondary">Back</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <section class="footer_container">
+  <div class="footer">
+    <div id="about">
+      <h3>ABOUT US</h3>
+      <ul>
+        <li><strong>Yevhen Horschar - FIIT student</strong></li>
+        <li><strong>Artem Kinash - FIIT student</strong></li>
+      </ul>
+    </div>
+    <div id="resource">
+      <h3>RESOURCE</h3>
+      <ul>
+        <li><strong>BLOG</strong></li>
+        <li><strong>NEWS</strong></li>
+      </ul>
+    </div>
+    <div id="help">
+      <h3>HELP</h3>
+      <ul>
+        <li><strong>xhorshchar@stuba.sk</strong></li>
+        <li><strong>xkinash@stuba.sk</strong></li>
+      </ul>
+    </div>
+    <div id="important-info">
+      <h3>IMPORTANT INFORMATION</h3>
+      <ul>
+        <li><strong>WE CREATED OUR MAIN TITLE</strong></li>
+        <li><strong>WE CREATED LOGIN, REGISTER AND MY PROFILE</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</body>
+</html>

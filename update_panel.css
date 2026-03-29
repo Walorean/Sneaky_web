@@ -1,0 +1,439 @@
+*{ 
+    box-sizing: border-box; 
+}
+
+    :root {
+      --bg: #f4f3f0;
+      --surface: #ffffff;
+      --border: #dddbd6;
+      --border-focus: #4a3fff;
+      --accent: #4a3fff;
+      --accent-soft: #ece9ff;
+      --text-primary: #1a1916;
+      --text-secondary: #6b6860;
+      --text-placeholder: #b0aea8;
+      --section-label: #3d3bcc;
+      --danger: #e84545;
+      --btn-primary-bg: #2e2e2e;
+      --btn-primary-fg: #ffffff;
+      --btn-secondary-bg: #ededea;
+      --btn-secondary-fg: #1a1916;
+      --radius: 10px;
+      --radius-sm: 6px;
+      --shadow: 0 1px 3px rgba(0,0,0,.07), 0 4px 12px rgba(0,0,0,.05);
+      --font: 'DM Sans', sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+    .main_body{
+        padding: 1rem;
+    }
+    .page-title {
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 1.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    /* ── Image Upload ── */
+    .image-upload-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .image-upload-card .card-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: .75rem;
+    }
+
+    .upload-zone {
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius-sm);
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      background: var(--bg);
+    }
+
+    .upload-zone:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .upload-zone svg { color: var(--text-secondary); }
+    .upload-zone span { font-size: .78rem; color: var(--text-secondary); font-weight: 500; }
+
+    .upload-status {
+      margin-top: .6rem;
+      font-size: .72rem;
+      color: var(--danger);
+      font-family: var(--mono);
+    }
+
+    /* ── Main Form ── */
+    .form-stack { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .field { display: flex; flex-direction: column; gap: .35rem; }
+    .field + .field { margin-top: .85rem; }
+
+    label {
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+    }
+
+    label .req { color: var(--danger); }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      font-family: var(--font);
+      font-size: .88rem;
+      color: var(--text-primary);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: .6rem .85rem;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: var(--text-placeholder); }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(74,63,255,.12);
+      background: #fff;
+    }
+
+    textarea { resize: vertical; min-height: 72px; line-height: 1.5; }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6860' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .85rem center;
+      padding-right: 2.2rem;
+      cursor: pointer;
+    }
+
+    /* ── Specs card with accent border ── */
+    .card.specs {
+      border: 1.5px dashed var(--accent);
+    }
+
+    .card.specs .card-title { color: var(--section-label); }
+
+    /* ── Color picker row ── */
+    .color-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+
+    .color-row input[type="text"] { flex: 1; }
+
+    .color-swatch-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      flex-shrink: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .color-swatch-btn input[type="color"] {
+      width: 200%;
+      height: 200%;
+      border: none;
+      cursor: pointer;
+      transform: translate(-25%, -25%);
+      padding: 0;
+      background: none;
+    }
+
+    .add-color-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+
+    .add-color-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .color-count {
+      font-size: .72rem;
+      color: var(--text-placeholder);
+      margin-top: .3rem;
+      font-family: var(--mono);
+    }
+
+    .color-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .5rem;
+    }
+
+    .color-tag {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      background: var(--accent-soft);
+      border: 1px solid rgba(74,63,255,.2);
+      border-radius: 20px;
+      padding: .2rem .6rem .2rem .4rem;
+      font-size: .75rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .color-tag .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,.1);
+      flex-shrink: 0;
+    }
+
+    .color-tag button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--accent);
+      font-size: .85rem;
+      line-height: 1;
+      padding: 0;
+      opacity: .6;
+      transition: opacity .15s;
+    }
+
+    .color-tag button:hover { opacity: 1; }
+
+    /* ── Hint text ── */
+    .hint {
+      font-size: .72rem;
+      color: var(--text-placeholder);
+      margin-top: .2rem;
+      font-family: var(--mono);
+    }
+
+    /* ── Stock combos ── */
+    .stock-empty {
+      font-size: .8rem;
+      color: var(--text-placeholder);
+      font-family: var(--mono);
+      padding: .5rem 0;
+    }
+
+    .combo-group { margin-top: 1rem; }
+    .combo-group + .combo-group { margin-top: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+
+    .combo-group-header {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: .6rem;
+    }
+
+    .combo-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,.12);
+      flex-shrink: 0;
+    }
+
+    .combo-group-name {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .combo-rows { display: flex; flex-direction: column; gap: .45rem; }
+
+    .combo-row {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: .45rem .75rem;
+      transition: border-color .15s;
+    }
+
+    .combo-row:focus-within {
+      border-color: var(--border-focus);
+      background: #fff;
+    }
+
+    .combo-size-label {
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-family: var(--mono);
+      min-width: 54px;
+      flex-shrink: 0;
+    }
+
+    .combo-sep {
+      font-size: .72rem;
+      color: var(--text-placeholder);
+      flex-shrink: 0;
+    }
+
+    .combo-row input[type="number"] {
+      border: none;
+      background: transparent;
+      padding: 0;
+      font-size: .88rem;
+      font-family: var(--mono);
+      width: 64px;
+      box-shadow: none;
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    .combo-row input[type="number"]:focus {
+      border: none;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .combo-unit {
+      font-size: .72rem;
+      color: var(--text-placeholder);
+      flex-shrink: 0;
+    }
+
+    .total-stock {
+      margin-top: 1rem;
+      font-size: .78rem;
+      color: var(--text-secondary);
+      font-family: var(--mono);
+      padding-top: .75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .total-stock span { color: var(--text-primary); font-weight: 600; }
+
+    /* ── Buttons ── */
+    .actions {
+      display: flex;
+      gap: .75rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--font);
+      font-size: .88rem;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: .65rem 1.6rem;
+      cursor: pointer;
+      transition: opacity .2s, transform .15s;
+      letter-spacing: .02em;
+    }
+    
+
+    .btn:active { transform: scale(.97); }
+
+    .btn-primary { 
+        background: #A70FEB; 
+        color: white; 
+    }
+    .btn-primary:hover { opacity: .85; }
+
+    .btn-secondary { 
+        background:#A70FEB ; 
+        color: white; 
+    }
+    .btn-secondary:hover { opacity: .75; }
+    
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .image-upload-card {
+        max-width: 100%;
+      }
+
+      .upload-zone {
+        aspect-ratio: 16/7;
+      }
+
+      .actions { justify-content: stretch; }
+      .btn { flex: 1; text-align: center; }
+    }

@@ -136,6 +136,7 @@
   cursor: pointer;
   font-weight: bold;
   transition: 0.2;
+  font-size: 18px;
 }
 .next_step:hover{
     background-color: #cb79f1;
