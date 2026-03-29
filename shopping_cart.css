@@ -141,6 +141,22 @@
 .next_step:hover{
     background-color: #cb79f1;
 }
+.qty_input {
+    width: 60px;
+    text-align: center;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 2px;
+    outline: none;
+}
+
+.qty_input:focus {
+    border-color: rgb(231, 170, 235);
+}
 @media (max-width: 700px) {
     .navigation {
         padding-top: 10px;
@@ -284,5 +300,11 @@
         color: rgb(231, 170, 235);
         cursor: pointer;
         font-weight: bold;
+    }
+    .qty_input {
+        width: 30px;
+        font-size: 10px;
+        padding: 2px 1px;
+        border-radius: 3px;
     }
 }
