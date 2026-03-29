@@ -1,19 +1,9 @@
-﻿
-.header{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    align-items:center;
-    padding:10px 40px;
-    background:#4C3C6B;
-    gap: 10px;
-    width: 95%;
-}
-
-
-.cart_body {
+﻿.cart_body {
     margin: 30px 60px;
     margin-bottom: 60px;
     font-family: Arial, sans-serif;
+    padding-bottom: 50px;
+    padding-top: 50px;
 }
 
 .cart_container {

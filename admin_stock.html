@@ -6,18 +6,19 @@
     <title>SNEAKYZZ - Admin Stock</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="admin_stock.css">
+    <link rel="stylesheet" href="create_panel.css">
 </head>
 <body>
 
 <section class="header_container">
     <div class="header">
-        <a href="index.html"><h1>SNEAKYZZ</h1></a>
+        <a href="admin_home.html"><h1>SNEAKYZZ</h1></a>
         <div class="search_box">
             <input type="text" id="search" placeholder="Search product...">
             <button id="search_button">🔍</button>
         </div>
         <div class="main_buttons">
-            <button id="logout">LOG OUT</button>
+            <button id="logout" onclick="location.href='index.html'">LOG OUT</button>
         </div>
     </div>
 </section>
@@ -38,7 +39,7 @@
 
                 <div class="cart_item_cont">
                     <div class="quantity_cont">
-                        <button class="edit_item" title="Edit">✏️</button>
+                        <button class="edit_item" title="Edit" onclick="location.href='admin_update_product.html'">✏️</button>
                         <button class="cancel_item" title="Delete">X</button>
                     </div>
 
@@ -46,7 +47,6 @@
                         <img class="item_img" src="assets/yellow_shoes.png">
                         <div class="item_text">
                             <h5>Urban Runner X</h5>
-                            <h5>Short description</h5>
                         </div>
                     </div>
 
@@ -66,7 +66,7 @@
 
                 <div class="cart_item_cont">
                     <div class="quantity_cont">
-                        <button class="edit_item" title="Edit">✏️</button>
+                        <button class="edit_item" title="Edit" onclick="location.href='admin_update_product.html'">✏️</button>
                         <button class="cancel_item" title="Delete">X</button>
                     </div>
 
@@ -74,7 +74,6 @@
                         <img class="item_img" src="assets/red_shoes.png">
                         <div class="item_text">
                             <h5>Classic Heritage</h5>
-                            <h5>Short description</h5>
                         </div>
                     </div>
 
@@ -94,7 +93,7 @@
 
                 <div class="cart_item_cont">
                     <div class="quantity_cont">
-                        <button class="edit_item" title="Edit">✏️</button>
+                        <button class="edit_item" title="Edit" onclick="location.href='admin_update_product.html'">✏️</button>
                         <button class="cancel_item" title="Delete">X</button>
                     </div>
 
@@ -102,7 +101,6 @@
                         <img class="item_img" src="assets/blue_shoes.png">
                         <div class="item_text">
                             <h5>Aero Glide</h5>
-                            <h5>Short description</h5>
                         </div>
                     </div>
 

@@ -10,16 +10,16 @@
 </head>
 <body>
 <section class="header_container">
-  <div class="header">
-    <a href="index.html"><h1>SNEAKYZZ</h1></a>
-    <div class = "search_box">
-      <input type="text" id="search" placeholder="Search product...">
-      <button id="search_button">🔍</button>
+    <div class="header">
+        <a href="admin_home.html"><h1>SNEAKYZZ</h1></a>
+        <div class="search_box">
+            <input type="text" id="search" placeholder="Search product...">
+            <button id="search_button">🔍</button>
+        </div>
+        <div class="main_buttons">
+            <button id="logout" onclick="location.href='index.html'">LOG OUT</button>
+        </div>
     </div>
-    <div class="main_buttons">
-      <button id="logout" onclick="location.href='login_page.html'">LOG OUT</button>
-    </div>
-  </div>
 </section>
 <section class="main-container">
   <div class="admin_body">
@@ -48,13 +48,27 @@
           </div>
 
           <div class="form_field">
-            <label>Category *</label>
+            <label>Categories</label>
+            <div class="color_input_row">
+              <select>
+                <option value="" disabled selected>Select category</option>
+                <option>Men</option>
+                <option>Women</option>
+                <option>Sport</option>
+                <option>Casual</option>
+              </select>
+              <button type="button" id="add_color_btn">+</button>
+            </div>
+            <p class="color_count">0 categories assigned</p>
+          </div>
+          <div class="form_field">
+            <label>Brand *</label>
             <select>
-              <option value="" disabled selected>Select category</option>
-              <option>Men</option>
-              <option>Women</option>
-              <option>Sport</option>
-              <option>New</option>
+              <option value="" disabled selected>Select brand</option>
+              <option>NUKE</option>
+              <option>RITA</option>
+              <option>ABIBAS</option>
+              <option>RIBKA</option>
             </select>
           </div>
 
@@ -207,14 +221,14 @@
           <p class="total-stock">Grand total: <span>54</span> units across all variants</p>
         </div>
         <div class="form_buttons">
-          <button type="submit" class="btn_create">Update Product</button>
-          <button type="button" class="btn_back">Back</button>
+          <button type="submit" class="btn_create" onclick="location.href='admin_stock.html'">Update Product</button>
+          <button type="button" class="btn_back" onclick="location.href='admin_stock.html'">Back</button>
         </div>
       </div>
     </div>
   </div>
 </section>
-  <section class="footer_container">
+<section class="footer_container">
   <div class="footer">
     <div id="about">
       <h3>ABOUT US</h3>

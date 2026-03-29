@@ -38,6 +38,11 @@
     max-width: 900px;
     margin: 40px auto;
 }
+#admin_h{
+    gap: 250px;
+    padding-bottom:200px;
+}
+
 @media (max-width: 600px) {
     .confirm_body {
         padding: 40px 15px;
