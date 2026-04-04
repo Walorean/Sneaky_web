@@ -9,7 +9,7 @@
 <body>
 <section class="header_container">
     <div class="header">
-        <a href="{{route('index')}}"><h1>SNEAKYZZ</h1></a>
+        <a href="{{route('home')}}"><h1>SNEAKYZZ</h1></a>
         <div class = "search_box">
             <input type="text" id="search" placeholder="Search product...">
             <button id="search_button">🔍</button>

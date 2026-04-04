@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNEAKYZZ</title>
+    <title>SNEAKYZZ-LOGIN</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 <section class="header_container">
-    <div class="header">
-        <a href="{{route('index')}}"><h1>SNEAKYZZ</h1></a>
+    <header class="header">
+        <a href="{{route('home')}}"><h1>SNEAKYZZ</h1></a>
         <div class = "search_box">
             <input type="text" id="search" placeholder="Search product...">
             <button id="search_button">🔍</button>
@@ -17,17 +17,17 @@
         <div class="main_buttons">
             <button id="likes" onclick="location.href='liked_page.html'">❤️</button>
             <button id="cart" onclick="location.href='shopping_cart.html'">🛒</button>
-            <button id="my_profile" onclick="location.href='login_page.html'">👤</button>
+            <button onclick="window.location='{{ route('login') }}'">👤</button>
         </div>
-    </div>
-    <div class="navbar">
+    </header>
+    <navbar class="navbar">
         <div class="navbar_buttons">
             <button onclick="location.href='category_products_page.html'"><strong>NEW</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>MEN</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>WOMEN</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>SPORT</strong></button>
         </div>
-    </div>
+    </navbar>
 </section>
 <section class= "sign_in_container">
     <div class="sign_in_l_side">
@@ -54,12 +54,12 @@
                 <li>Discount notifications</li>
             </ul>
         </div>
-        <button class="sign_in_reg_button" onclick="location.href='register_account_page.html'"><strong>Register</strong></button>
+        <button class="sign_in_reg_button" onclick="window.location='{{ route('register') }}'"><strong>Register</strong></button>
     </div>
 
 </section>
 <section class="footer_container">
-    <div class="footer">
+    <footer class="footer">
         <div id="about">
             <h3>ABOUT US</h3>
             <ul>
@@ -88,7 +88,7 @@
                 <li><strong>WE CREATED LOGIN, REGISTER AND MY PROFILE</strong></li>
             </ul>
         </div>
-    </div>
+    </footer>
 </section>
 </body>
 </html>
