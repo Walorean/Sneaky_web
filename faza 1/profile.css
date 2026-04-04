@@ -1,0 +1,279 @@
+.profile_container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    max-width:1200px;
+    margin:60px auto;
+    overflow:hidden;
+    border:2px solid #312E33;
+    border-radius: 8px;
+}
+.profile_r_container,
+.profile_l_container{
+    padding:40px;
+    background:white;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.profile_l_container h2{
+ margin-bottom:0px;
+}
+.profile_r_container h2{
+ margin-bottom:0px;
+}
+
+.email_box,
+.address_box,
+.name_box{
+    display:flex;
+    gap:10px;
+}
+
+#name,
+#email,
+#address{
+    align-self: center;
+    width:100%;
+    padding:10px;
+    border:2px solid #312E33;
+    border-radius:4px;
+}
+.save_change{
+    transition: 0.2s;
+    background: #A70FEB;
+    border:2px solid #312E33;
+    width:20%;
+    height:50%;
+    align-self: center;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+.save_change:hover{
+    background:#912CC0;
+    transform:scale(1.05);
+}
+#open_orders{
+    transition: 0.2s;
+    background: #A70FEB;
+    border:2px solid #312E33;
+    width:40%;
+    height:50%;
+    align-self: center;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+#open_orders:hover{
+    background:#912CC0;
+    transform:scale(1.05);
+}
+.check_new_password_box,
+.new_password_box,
+.current_password_box{
+    border:2px solid #312E33;
+    background-color: #4C3C6B;
+    border-radius: 8px;
+    width: 100%;
+    margin: 12px auto;
+}
+
+.new_password_box h4{
+    margin:5px 10px;
+    color: white;
+}
+.current_password_box h4{
+    margin:5px 10px;
+    color: white;
+}
+.check_new_password_box h4{
+    margin:5px 10px;
+    color: white;
+}
+#check_passwd,
+#new_passwd, 
+#curr_passwd{
+    margin: 3px 10px;
+    align-self: start;
+    width:90%;
+    height:15%;
+    padding:10px;
+    border:2px solid #c8c7c9;
+    border-radius:8px;
+}
+#password_change{
+    transition: 0.2s;
+    background: #A70FEB;
+    border:2px solid #312E33;
+    width:100%;
+    height: 10%;
+    align-self: center;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+#password_change:hover{
+    transform:scale(1.05);
+    background:#912CC0;
+}
+
+#log_out{
+    transition: 0.2s;
+    background: #d50068;
+    border:2px solid #312E33;
+    width:75%;
+    height: 50px;
+    align-self: center;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+#log_out:hover{
+    transform:scale(1.05);
+    background: #d3004a;
+}
+.card{
+    background:#ffffff;
+    border:2px solid #312E33;
+    border-radius:10px;
+    padding:30px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.profile_l_container .card{
+    border-left:6px solid #A70FEB;
+}
+
+.profile_r_container .card{
+    border-left:6px solid #4C3C6B;
+}
+
+@media (max-width: 900px) {
+    .profile_container{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        width: 100%;
+        margin:30px auto;
+        overflow:hidden;
+        border:2px solid #312E33;
+        border-radius: 8px;
+    }
+    .profile_r_container,
+    .profile_l_container{
+        padding:10px;
+        background:white;
+        display:grid;
+        flex-direction:row;
+        gap:5px;
+    }
+    .profile_l_container h2{
+        margin-bottom:0px;
+    }
+    .profile_r_container h2{
+        margin-bottom:0px;
+    }
+
+    .email_box,
+    .address_box,
+    .name_box{
+        display:flex;
+        gap:5px;
+    }
+
+    #name,
+    #email,
+    #address{
+        align-self: center;
+        width:90%;
+        padding:10px;
+        border:2px solid #312E33;
+        border-radius:4px;
+    }
+    .save_change{
+        transition: 0.2s;
+        background: #A70FEB;
+        border:2px solid #312E33;
+        width:40%;
+        height:50%;
+        align-self: center;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        font-size: 10px;
+        cursor:pointer;
+    }
+    .save_change:hover{
+        background:#912CC0;
+        transform:scale(1.05);
+    }
+    #open_orders{
+        transition: 0.2s;
+        background: #A70FEB;
+        border:2px solid #312E33;
+        width:40%;
+        height:50%;
+        align-self: center;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        cursor:pointer;
+    }
+    #open_orders:hover{
+        background:#912CC0;
+        transform:scale(1.05);
+    }
+    .check_new_password_box,
+    .new_password_box,
+    .current_password_box{
+        border:2px solid #312E33;
+        background-color: #4C3C6B;
+        border-radius: 8px;
+        width: 90%;
+        margin: 12px auto;
+    }
+
+    #check_passwd,
+    #new_passwd,
+    #curr_passwd{
+        margin: 3px 10px;
+        align-self: start;
+        width:70%;
+        height:15%;
+        padding:10px;
+        border:2px solid #c8c7c9;
+        border-radius:8px;
+    }
+    #password_change{
+        transition: 0.2s;
+        background: #A70FEB;
+        border:2px solid #312E33;
+        width:70%;
+        height: 10%;
+        align-self: center;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        cursor:pointer;
+    }
+    #password_change:hover{
+        transform:scale(1.05);
+        background:#912CC0;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .profile_container {
+        grid-template-columns: 1fr;
+        margin: 10px auto;
+        border-radius: 4px;
+    }
+
+    .profile_r_container,
+    .profile_l_container {
+        padding: 15px;
+    }
+}

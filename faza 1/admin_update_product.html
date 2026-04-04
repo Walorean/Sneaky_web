@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel – Update Shoe</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="create_panel.css">
+  <link rel="stylesheet" href="update_panel.css">
+</head>
+<body>
+<section class="header_container">
+    <div class="header">
+        <a href="admin_home.html"><h1>SNEAKYZZ</h1></a>
+        <div class="search_box">
+            <input type="text" id="search" placeholder="Search product...">
+            <button id="search_button">🔍</button>
+        </div>
+        <div class="main_buttons">
+            <button id="logout" onclick="location.href='index.html'">LOG OUT</button>
+        </div>
+    </div>
+</section>
+<section class="main-container">
+  <div class="admin_body">
+    <h1><u>ADMIN PANEL - UPDATE ITEM</u></h1>
+
+    <div class="admin_form_container">
+
+      <div class="image_upload_container">
+        <p>Product Images (Min. 2 images)</p>
+        <div class="upload_box">
+          <span class="upload_icon">&#8679;</span>
+          <label for="image_input">Upload</label>
+          <input type="file" id="image_input" accept="image/*" multiple hidden>
+        </div>
+        <p class="upload_status">0 image(s) uploaded. Need 2 more.</p>
+      </div>
+
+      <div class="form_sections">
+
+        <div class="form_section">
+          <h3>Basic Details</h3>
+
+          <div class="form_field">
+            <label>Product Name *</label>
+            <input type="text" placeholder="e.g., Nike Air Max 270">
+          </div>
+
+          <div class="form_field">
+            <label>Categories</label>
+            <div class="color_input_row">
+              <select>
+                <option value="" disabled selected>Select category</option>
+                <option>Men</option>
+                <option>Women</option>
+                <option>Sport</option>
+                <option>Casual</option>
+              </select>
+              <button type="button" id="add_color_btn">+</button>
+            </div>
+            <p class="color_count">0 categories assigned</p>
+          </div>
+          <div class="form_field">
+            <label>Brand *</label>
+            <select>
+              <option value="" disabled selected>Select brand</option>
+              <option>NUKE</option>
+              <option>RITA</option>
+              <option>ABIBAS</option>
+              <option>RIBKA</option>
+            </select>
+          </div>
+
+          <div class="form_field">
+            <label>Basic Info</label>
+            <textarea placeholder="Basic information about these shoes..."></textarea>
+          </div>
+
+          <div class="form_field">
+            <label>Product Origin Information</label>
+            <input type="text" placeholder="e.g., EuroFleet Innovations, Titanium Plaza, 86767 DE Frankfurt am Main, Germany">
+          </div>
+
+        <div class="form_section">
+          <h3>Product Specifications</h3>
+
+          <div class="form_field">
+            <label>Available Colors</label>
+            <div class="color_input_row">
+              <input type="text" id="color_name_input" placeholder="Color name (e.g., Midnight Blue)">
+              <input type="color" id="color_picker">
+              <button type="button" id="add_color_btn">+</button>
+            </div>
+            <p class="color_count">0 color(s) added</p>
+          </div>
+
+          <div class="form_field">
+            <label>Material</label>
+            <input type="text" placeholder="Basic information about material...">
+          </div>
+
+          <div class="form_field">
+            <label>Product Code</label>
+            <input type="text" placeholder="e.g., IM8002-030">
+          </div>
+        </div>
+
+        <div class="form_section">
+          <h3>Inventory & Pricing</h3>
+
+          <div class="form_field">
+            <label>Price (EUR)</label>
+            <input type="number" placeholder="e.g., 129.99" min="0" step="0.01">
+          </div>
+
+          <div class="form_field">
+            <label>Available Sizes</label>
+            <input type="text" placeholder="e.g., 38, 39, 40, 41, 42, 43, 44, 45">
+            <small>Separate sizes with commas</small>
+          </div>
+        <div class="form_field">
+          <h3>Stock per Size & Color</h3>
+          <small>Add colors above and enter sizes to unlock stock inputs.</small>
+
+          <div id="stockCombos">
+
+            <div class="combo-group">
+              <div class="combo-group-header">
+                <span class="combo-dot" id="first_color"></span>
+                <span class="combo-group-name">Midnight Black</span>
+                <span class="size_count">3 sizes</span>
+              </div>
+              <div class="combo-rows">
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 40</span>
+                  <span class="combo-sep">·</span>
+                  <span class="color_name">Midnight Black</span>
+                  <input type="number" min="0" value="12"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 41</span>
+                  <span class="combo-sep">·</span>
+                  <span class="color_name">Midnight Black</span>
+                  <input type="number" min="0" value="8"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 42</span>
+                  <span class="combo-sep">·</span>
+                  <span class="color_name">Midnight Black</span>
+                  <input type="number" min="0" value="5"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="combo-group">
+              <div class="combo-group-header">
+                <span class="combo-dot"  id="second_color"></span>
+                <span class="combo-group-name">Ice Blue</span>
+                <span class="size_count">3 sizes</span>
+              </div>
+              <div class="combo-rows">
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 40</span>
+                  <span class="combo-sep">·</span>
+                  <span class="color_name">Ice Blue</span>
+                  <input type="number" min="0" value="3"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 41</span>
+                  <span class="combo-sep">·</span>
+                  <span class="color_name">Ice Blue</span>
+                  <input type="number" min="0" value="7"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 42</span>
+                  <span class="combo-sep">·</span>
+                  <span class="color_name">Ice Blue</span>
+                  <input type="number" min="0" value="0"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="combo-group">
+              <div class="combo-group-header">
+                <span class="combo-dot"  id="third_color"></span>
+                <span class="combo-group-name">Chalk White</span>
+                <span class="size_count">3 sizes</span>
+              </div>
+              <div class="combo-rows">
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 40</span>
+                  <span class="combo-sep">·</span>
+                  <span class="color_name">Chalk White</span>
+                  <input type="number" min="0" value="6"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 41</span>
+                  <span class="combo-sep">·</span>
+                  <span class="color_name">Chalk White</span>
+                  <input type="number" min="0" value="9"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+                <div class="combo-row">
+                  <span class="combo-size-label">Size 42</span>
+                  <span class="combo-sep">·</span>
+                  <span class="color_name">Chalk White</span>
+                  <input type="number" min="0" value="4"/>
+                  <span class="combo-unit">pcs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="total-stock">Grand total: <span>54</span> units across all variants</p>
+        </div>
+        <div class="form_buttons">
+          <button type="submit" class="btn_create" onclick="location.href='admin_stock.html'">Update Product</button>
+          <button type="button" class="btn_back" onclick="location.href='admin_stock.html'">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="footer_container">
+  <div class="footer">
+    <div id="about">
+      <h3>ABOUT US</h3>
+      <ul>
+        <li><strong>Yevhen Horschar - FIIT student</strong></li>
+        <li><strong>Artem Kinash - FIIT student</strong></li>
+      </ul>
+    </div>
+    <div id="resource">
+      <h3>RESOURCE</h3>
+      <ul>
+        <li><strong>BLOG</strong></li>
+        <li><strong>NEWS</strong></li>
+      </ul>
+    </div>
+    <div id="help">
+      <h3>HELP</h3>
+      <ul>
+        <li><strong>xhorshchar@stuba.sk</strong></li>
+        <li><strong>xkinash@stuba.sk</strong></li>
+      </ul>
+    </div>
+    <div id="important-info">
+      <h3>IMPORTANT INFORMATION</h3>
+      <ul>
+        <li><strong>WE CREATED OUR MAIN TITLE</strong></li>
+        <li><strong>WE CREATED LOGIN, REGISTER AND MY PROFILE</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</body>
+</html>
