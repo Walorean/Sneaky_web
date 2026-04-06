@@ -8,7 +8,7 @@
 </head>
 <body>
 <section class="header_container">
-    <div class="header">
+    <header class="header">
         <a href="{{route('home')}}"><h1>SNEAKYZZ</h1></a>
         <div class = "search_box">
             <input type="text" id="search" placeholder="Search product...">
@@ -17,17 +17,23 @@
         <div class="main_buttons">
             <button id="likes" onclick="location.href='liked_page.html'">❤️</button>
             <button id="cart" onclick="location.href='shopping_cart.html'">🛒</button>
-            <button onclick="window.location='{{ route('login') }}'">👤</button>
+            @auth
+                <button id="my_profile" onclick="window.location='{{ route('my_profile') }}'">👤</button>
+            @endauth
+
+            @guest
+                <button id="my_profile" onclick="window.location='{{ route('login') }}'">👤</button>
+            @endguest
         </div>
-    </div>
-    <div class="navbar">
+    </header>
+    <nav class="navbar">
         <div class="navbar_buttons">
             <button onclick="location.href='category_products_page.html'"><strong>NEW</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>MEN</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>WOMEN</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>SPORT</strong></button>
         </div>
-    </div>
+    </nav>
 </section>
 <section class="main_container">
     <div class="hero-ad">
@@ -43,11 +49,11 @@
     </div>
     <h1>FOR MEN</h1>
     <section id="men_main">
-        <img id="men_main_picture" src="assets/sneaker_men.png">
+        <img id="men_main_picture" src="{{ Vite::asset('resources/assets/sneaker_men.png') }}">
         <div class="products">
             <div class="product-card" onclick="location.href='product_page.html'">
                 <div class="product-image-box">
-                    <img src="assets/red_shoes.png">
+                    <img src="{{ Vite::asset('resources/assets/yellow_shoes.png') }}" alt="Product Name">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Urban Runner X</div>
@@ -56,7 +62,7 @@
             </div>
             <div class="product-card" onclick="location.href='product_page.html'">
                 <div class="product-image-box">
-                    <img src="assets/black_shoes.png">
+                    <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="Product Name">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Classic Heritage</div>
@@ -65,7 +71,7 @@
             </div>
             <div class="product-card" onclick="location.href='product_page.html'">
                 <div class="product-image-box">
-                    <img src="assets/blue_shoes.png">
+                    <img src="{{ Vite::asset('resources/assets/red_shoes.png') }}" alt="Product Name">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Aero Glide</div>
@@ -74,7 +80,7 @@
             </div>
             <div class="product-card" onclick="location.href='product_page.html'">
                 <div class="product-image-box">
-                    <img src="assets/yellow_shoes.png">
+                    <img src="{{ Vite::asset('resources/assets/gray_shoes.png') }}" alt="Product Name">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Vanguard Low</div>
@@ -88,7 +94,7 @@
         <div class="products">
             <div class="product-card" onclick="location.href='product_page.html'">
                 <div class="product-image-box">
-                    <img src="assets/gray_shoes.png">
+                    <img src="{{ Vite::asset('resources/assets/yellow_shoes.png') }}" alt="Product Name">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Urban Runner X</div>
@@ -97,7 +103,7 @@
             </div>
             <div class="product-card" onclick="location.href='product_page.html'">
                 <div class="product-image-box">
-                    <img src="assets/black_var2.png">
+                    <img src="{{ Vite::asset('resources/assets/black_var2.png') }}" alt="Product Name">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Classic Heritage</div>
@@ -106,7 +112,7 @@
             </div>
             <div class="product-card" onclick="location.href='product_page.html'">
                 <div class="product-image-box">
-                    <img src="assets/swamp_shoes.png">
+                    <img src="{{ Vite::asset('resources/assets/cream_shoes.png') }}" alt="Product Name">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Aero Glide</div>
@@ -115,7 +121,7 @@
             </div>
             <div class="product-card" onclick="location.href='product_page.html'">
                 <div class="product-image-box">
-                    <img src="assets/cream_shoes.png">
+                    <img src="{{ Vite::asset('resources/assets/swamp_shoes.png') }}" alt="Product Name">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Vanguard Low</div>
@@ -123,11 +129,11 @@
                 </div>
             </div>
         </div>
-        <img id="women_main_picture" src="assets/sneaker_men.png">
+        <img id="women_main_picture" src="{{ Vite::asset('resources/assets/sneaker_men.png') }}">
     </section>
 </section>
 <section class="footer_container">
-    <div class="footer">
+    <footer class="footer">
         <div id="about">
             <h3>ABOUT US</h3>
             <ul>
@@ -156,7 +162,7 @@
                 <li><strong>WE CREATED LOGIN, REGISTER AND MY PROFILE</strong></li>
             </ul>
         </div>
-    </div>
+    </footer>
 </section>
 </body>
 </html>

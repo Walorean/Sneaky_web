@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNEAKYZZ-LOGIN</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>SNEAKYZZ</title>
+    @vite(['resources/css/app.css', 'resources/css/profile.css'])
 </head>
 <body>
 <section class="header_container">
-    <header class="header">
+    <div class="header">
         <a href="{{route('home')}}"><h1>SNEAKYZZ</h1></a>
         <div class = "search_box">
             <input type="text" id="search" placeholder="Search product...">
@@ -25,47 +25,71 @@
                 <button id="my_profile" onclick="window.location='{{ route('login') }}'">👤</button>
             @endguest
         </div>
-    </header>
-    <nav class="navbar">
+    </div>
+    <div class="navbar">
         <div class="navbar_buttons">
             <button onclick="location.href='category_products_page.html'"><strong>NEW</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>MEN</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>WOMEN</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>SPORT</strong></button>
         </div>
-    </nav>
+    </div>
 </section>
-<section class= "sign_in_container">
-    <div class="sign_in_l_side">
-        <h2><strong>Sign in:</strong></h2>
-        <div class="sign_in_email_container">
-            <div class="enter_email_text">Enter email:</div>
-            <input type="text" id="email_sign" placeholder="Email...">
-        </div>
-        <div>
-            <div class="enter_password_text">Enter password:</div>
-            <input type="text" id="password_sign" placeholder="Password...">
-        </div>
-        <button class="sign_in_button" onclick="location.href='my_profile.html'"><strong>Sign in</strong></button>
-    </div>
-    <div class="sign_in_r_side">
-        <div class="sign_in_register_info_container">
-            <div class= "sign_in_reg_top_container">
-                <div class="sign_in_reg_top"><strong>Register and enjoy additional benefits with us:</strong></div>
-                <div class="sign_in_reg_logo"><strong>SNEAKYZZ</strong></div>
+<section class="profile_container">
+    <div class="profile_l_container">
+        <div class="card">
+            <h2>My Account</h2>
+            <div class = "name_box">
+                <h4>Your name:</h4>
+                <input type="text" id="name" value="{{ Auth::user()->name }}">
+                <button class="save_change">Save change</button>
             </div>
-            <ul>
-                <li>Announcements about new products and collections</li>
-                <li>Cashback for purchases</li>
-                <li>Discount notifications</li>
-            </ul>
+            <div class = "name_box">
+                <h4>Your surname:</h4>
+                <input type="text" id="lname" value="{{ Auth::user()->surname }}">
+                <button class="save_change">Save change</button>
+            </div>
+            <div class = "email_box">
+                <h4>Your email:</h4>
+                <input type="text" id="email" value="{{ Auth::user()->email }}">
+                <button class="save_change">Save change</button>
+            </div>
+            <div class = "email_box">
+                <h4>Phone number:</h4>
+                <input type="text" id="phone_num" value="{{ Auth::user()->phone_num }}">
+                <button class="save_change">Save change</button>
+            </div>
+            <div class = "address_box">
+                <h4>Your orders:</h4>
+                <button id="open_orders" onclick="location.href='my_orders.html'">Open</button>
+            </div>
         </div>
-        <button class="sign_in_reg_button" onclick="window.location='{{ route('register') }}'"><strong>Register</strong></button>
     </div>
-
+    <div class="profile_r_container">
+        <div class="card">
+            <h2>Change Password</h2>
+            <div class = "current_password_box">
+                <h4>Enter current password:</h4>
+                <input type="password" id="curr_passwd" placeholder="">
+            </div>
+            <div class = "new_password_box">
+                <h4>Enter new password:</h4>
+                <input type="password" id="new_passwd" placeholder="">
+            </div>
+            <div class = "check_new_password_box">
+                <h4>Confirm your new password :</h4>
+                <input type="password" id="check_passwd" placeholder="">
+            </div>
+            <button id="password_change">Change password</button>
+        </div>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" id="log_out">QUIT ACCOUNT</button>
+        </form>
+    </div>
 </section>
 <section class="footer_container">
-    <footer class="footer">
+    <div class="footer">
         <div id="about">
             <h3>ABOUT US</h3>
             <ul>
@@ -94,7 +118,7 @@
                 <li><strong>WE CREATED LOGIN, REGISTER AND MY PROFILE</strong></li>
             </ul>
         </div>
-    </footer>
+    </div>
 </section>
 </body>
 </html>

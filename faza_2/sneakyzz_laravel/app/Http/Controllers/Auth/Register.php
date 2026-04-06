@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class Register extends Controller
 {
@@ -21,7 +22,7 @@ class Register extends Controller
             'password' => 'required|min:6',
         ]);
 
-        User::create([
+        $user = User::create([
             'name'          => $request->fname,
             'surname'       => $request->lname,
             'email'         => $request->email,
@@ -29,7 +30,19 @@ class Register extends Controller
             'password_hash' => Hash::make($request->password),
         ]);
 
+        Auth::login($user);
+
+        return redirect()->route('my_profile');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
         return redirect()->route('login');
     }
 
+    public function showProfile()
+    {
+        return view('profile');
+    }
 }

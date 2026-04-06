@@ -17,23 +17,38 @@
         <div class="main_buttons">
             <button id="likes" onclick="location.href='liked_page.html'">❤️</button>
             <button id="cart" onclick="location.href='shopping_cart.html'">🛒</button>
-            <button onclick="window.location='{{ route('login') }}'">👤</button>
+            @auth
+                <button id="my_profile" onclick="window.location='{{ route('my_profile') }}'">👤</button>
+            @endauth
+
+            @guest
+                <button id="my_profile" onclick="window.location='{{ route('login') }}'">👤</button>
+            @endguest
         </div>
     </header>
-    <div class="navbar">
+    <nav class="navbar">
         <div class="navbar_buttons">
             <button onclick="location.href='category_products_page.html'"><strong>NEW</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>MEN</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>WOMEN</strong></button>
             <button onclick="location.href='category_products_page.html'"><strong>SPORT</strong></button>
         </div>
-    </div>
+    </nav>
 </section>
 <section class="main_content">
     <h1 id="main_register_text"><strong>REGISTER AN ACCOUNT</strong></h1>
     <div class="register_forms">
         <div class="register_form">
             <form method="POST" action="{{ route('register.submit') }}">
+                @csrf
+
+                @if ($errors->any())
+                    <div class="errors">
+                        @foreach ($errors->all() as $error)
+                            <p style="color:red">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
                 <div class="form_group">
                     <label for="name">ENTER YOUR FIRST NAME:</label>
                     <input type="text" id="name" name="fname" required>
@@ -54,7 +69,7 @@
                     <label for="password">ENTER YOUR PASSWORD:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <button type="submit" class="register_button" onclick="location.href='my_profile.html'">CREATE ACCOUNT</button>
+                <button type="submit" class="register_button">CREATE ACCOUNT</button>
             </form>
         </div>
     </div>
