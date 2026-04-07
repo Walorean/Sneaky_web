@@ -38,15 +38,19 @@
 <section class= "sign_in_container">
     <div class="sign_in_l_side">
         <h2><strong>Sign in:</strong></h2>
-        <div class="sign_in_email_container">
-            <div class="enter_email_text">Enter email:</div>
-            <input type="text" id="email_sign" placeholder="Email...">
-        </div>
-        <div>
-            <div class="enter_password_text">Enter password:</div>
-            <input type="text" id="password_sign" placeholder="Password...">
-        </div>
-        <button class="sign_in_button" onclick="location.href='my_profile.html'"><strong>Sign in</strong></button>
+        <form method="POST" action="{{ route('login.submit') }}">
+            @csrf
+            <div class="sign_in_email_container">
+                <div class="enter_email_text">Enter email:</div>
+                <input type="email" name="email" id="email_sign" placeholder="Email...">
+            </div>
+            <div>
+                <div class="enter_password_text">Enter password:</div>
+                <input type="password" name="password" id="password_sign" placeholder="Password...">
+            </div>
+
+            <button type="submit" class="sign_in_button" ><strong>Sign in</strong></button>
+        </form>
     </div>
     <div class="sign_in_r_side">
         <div class="sign_in_register_info_container">

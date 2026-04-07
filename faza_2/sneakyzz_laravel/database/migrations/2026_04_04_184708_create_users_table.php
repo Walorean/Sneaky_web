@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('surname', 25);
             $table->string('phone_num', 15);
             $table->string('email', 50)->unique();
-            $table->string('password_hash', 255);
+            $table->string('password', 255);
             $table->rememberToken();
             $table->timestamps();
         });

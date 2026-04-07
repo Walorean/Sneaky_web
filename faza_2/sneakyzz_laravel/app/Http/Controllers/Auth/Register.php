@@ -27,7 +27,7 @@ class Register extends Controller
             'surname'       => $request->lname,
             'email'         => $request->email,
             'phone_num'     => $request->pname,
-            'password_hash' => Hash::make($request->password),
+            'password' => Hash::make($request->password),
         ]);
 
         Auth::login($user);

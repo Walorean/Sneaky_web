@@ -24,11 +24,11 @@ class User extends Authenticatable
         'surname',
         'phone_num',
         'email',
-        'password_hash',
+        'password',
     ];
 
     protected $hidden = [
-        'password_hash',
+        'password',
     ];
     /**
      * Get the attributes that should be cast.
