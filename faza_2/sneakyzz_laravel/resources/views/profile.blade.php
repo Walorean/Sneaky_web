@@ -1,9 +1,7 @@
-﻿@push('styles')
+﻿@extends('layout.layout_customer')
+@push('styles')
     @vite(['resources/css/profile.css'])
 @endpush
-
-@extends('layout.layout_customer')
-
 @section('content')
     <section class="profile_container">
         <div class="profile_l_container">
@@ -49,9 +47,11 @@
                 <div class="check_new_password_box">
                     <h4>Confirm your new password:</h4>
                     <input type="password" id="check_passwd">
+
                 </div>
-                <button id="password_change">Change password</button>  {{-- ✅ inside card --}}
+                  {{-- ✅ inside card --}}
             </div>  {{-- ✅ card closes AFTER the button --}}
+            <button id="password_change">Change password</button>
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

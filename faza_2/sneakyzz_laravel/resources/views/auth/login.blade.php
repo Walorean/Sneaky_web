@@ -1,104 +1,37 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNEAKYZZ-LOGIN</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body>
-<section class="header_container">
-    <header class="header">
-        <a href="{{route('home')}}"><h1>SNEAKYZZ</h1></a>
-        <div class = "search_box">
-            <input type="text" id="search" placeholder="Search product...">
-            <button id="search_button">🔍</button>
-        </div>
-        <div class="main_buttons">
-            <button id="likes" onclick="location.href='liked_page.html'">❤️</button>
-            <button id="cart" onclick="location.href='shopping_cart.html'">🛒</button>
-            @auth
-                <button id="my_profile" onclick="window.location='{{ route('my_profile') }}'">👤</button>
-            @endauth
+﻿@extends('layout.layout_customer')
+@section('content')
+    <section class= "sign_in_container">
+        <div class="sign_in_l_side">
+            <h2><strong>Sign in:</strong></h2>
+            <form method="POST" action="{{ route('login.submit') }}">
+                @csrf
+                <div class="sign_in_email_container">
+                    <div class="enter_email_text">Enter email:</div>
+                    <input type="email" name="email" id="email_sign" placeholder="Email...">
+                </div>
+                <div>
+                    <div class="enter_password_text">Enter password:</div>
+                    <input type="password" name="password" id="password_sign" placeholder="Password...">
+                </div>
 
-            @guest
-                <button id="my_profile" onclick="window.location='{{ route('login') }}'">👤</button>
-            @endguest
+                <button type="submit" class="sign_in_button" ><strong>Sign in</strong></button>
+            </form>
         </div>
-    </header>
-    <nav class="navbar">
-        <div class="navbar_buttons">
-            <button onclick="location.href='category_products_page.html'"><strong>NEW</strong></button>
-            <button onclick="location.href='category_products_page.html'"><strong>MEN</strong></button>
-            <button onclick="location.href='category_products_page.html'"><strong>WOMEN</strong></button>
-            <button onclick="location.href='category_products_page.html'"><strong>SPORT</strong></button>
+        <div class="sign_in_r_side">
+            <div class="sign_in_register_info_container">
+                <div class= "sign_in_reg_top_container">
+                    <div class="sign_in_reg_top"><strong>Register and enjoy additional benefits with us:</strong></div>
+                    <div class="sign_in_reg_logo"><strong>SNEAKYZZ</strong></div>
+                </div>
+                <ul>
+                    <li>Announcements about new products and collections</li>
+                    <li>Cashback for purchases</li>
+                    <li>Discount notifications</li>
+                </ul>
+            </div>
+            <button class="sign_in_reg_button" onclick="window.location='{{ route('register') }}'"><strong>Register</strong></button>
         </div>
-    </nav>
-</section>
-<section class= "sign_in_container">
-    <div class="sign_in_l_side">
-        <h2><strong>Sign in:</strong></h2>
-        <form method="POST" action="{{ route('login.submit') }}">
-            @csrf
-            <div class="sign_in_email_container">
-                <div class="enter_email_text">Enter email:</div>
-                <input type="email" name="email" id="email_sign" placeholder="Email...">
-            </div>
-            <div>
-                <div class="enter_password_text">Enter password:</div>
-                <input type="password" name="password" id="password_sign" placeholder="Password...">
-            </div>
+    </section>
 
-            <button type="submit" class="sign_in_button" ><strong>Sign in</strong></button>
-        </form>
-    </div>
-    <div class="sign_in_r_side">
-        <div class="sign_in_register_info_container">
-            <div class= "sign_in_reg_top_container">
-                <div class="sign_in_reg_top"><strong>Register and enjoy additional benefits with us:</strong></div>
-                <div class="sign_in_reg_logo"><strong>SNEAKYZZ</strong></div>
-            </div>
-            <ul>
-                <li>Announcements about new products and collections</li>
-                <li>Cashback for purchases</li>
-                <li>Discount notifications</li>
-            </ul>
-        </div>
-        <button class="sign_in_reg_button" onclick="window.location='{{ route('register') }}'"><strong>Register</strong></button>
-    </div>
+@endsection
 
-</section>
-<section class="footer_container">
-    <footer class="footer">
-        <div id="about">
-            <h3>ABOUT US</h3>
-            <ul>
-                <li><strong>Yevhen Horschar - FIIT student</strong></li>
-                <li><strong>Artem Kinash - FIIT student</strong></li>
-            </ul>
-        </div>
-        <div id="resource">
-            <h3>RESOURCE</h3>
-            <ul>
-                <li><strong>BLOG</strong></li>
-                <li><strong>NEWS</strong></li>
-            </ul>
-        </div>
-        <div id="help">
-            <h3>HELP</h3>
-            <ul>
-                <li><strong>xhorshchar@stuba.sk</strong></li>
-                <li><strong>xkinash@stuba.sk</strong></li>
-            </ul>
-        </div>
-        <div id="important-info">
-            <h3>IMPORTANT INFORMATION</h3>
-            <ul>
-                <li><strong>WE CREATED OUR MAIN TITLE</strong></li>
-                <li><strong>WE CREATED LOGIN, REGISTER AND MY PROFILE</strong></li>
-            </ul>
-        </div>
-    </footer>
-</section>
-</body>
-</html>

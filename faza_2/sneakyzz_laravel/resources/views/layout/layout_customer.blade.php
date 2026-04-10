@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SNEAKYZZ</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/profile.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
 <body>
@@ -16,14 +16,14 @@
             <button id="search_button">🔍</button>
         </div>
         <div class="main_buttons">
-            <button id="likes" onclick="location.href='liked_page.html'">❤️</button>
-            <button id="cart" onclick="location.href='shopping_cart.html'">🛒</button>
+            <button id="likes" onclick="location.href='liked_page.html'"><img src="{{ Vite::asset('resources/assets/like.png') }}" alt="LikedPageImage"></button>
+            <button id="cart" onclick="location.href='shopping_cart.html'"><img src="{{ Vite::asset('resources/assets/cart.png') }}" alt="CartPageImage"></button>
             @auth
-                <button id="my_profile" onclick="window.location='{{ route('my_profile') }}'">👤</button>
+                <button id="my_profile" onclick="window.location='{{ route('my_profile') }}'"><img src="{{ Vite::asset('resources/assets/profile.png') }}" alt="ProfilePageImage"></button>
             @endauth
 
             @guest
-                <button id="my_profile" onclick="window.location='{{ route('login') }}'">👤</button>
+                <button id="my_profile" onclick="window.location='{{ route('login') }}'"><img src="{{ Vite::asset('resources/assets/profile.png') }}" alt="ProfilePageImage"></button>
             @endguest
         </div>
     </header>
