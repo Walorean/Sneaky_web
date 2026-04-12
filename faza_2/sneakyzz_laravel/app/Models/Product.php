@@ -17,6 +17,7 @@ class Product extends Model
         'material',
         'basic_info',
         'origin',
+        'price',
     ];
 
     public function category(){
@@ -24,5 +25,11 @@ class Product extends Model
             'products_categories',
             'product_id',
             'category_id');
+    }
+    public function brand() {
+        return $this->belongsTo(Brand::class, 'brand_id', 'brand_id');
+    }
+    public function shoes() {                                        // ← premenuj z 'product' na 'shoes'
+        return $this->hasMany(Shoe::class, 'product_code', 'product_code');
     }
 }

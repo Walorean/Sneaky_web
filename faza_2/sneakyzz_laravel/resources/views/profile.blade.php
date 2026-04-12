@@ -49,8 +49,7 @@
                     <input type="password" id="check_passwd">
 
                 </div>
-                  {{-- ✅ inside card --}}
-            </div>  {{-- ✅ card closes AFTER the button --}}
+            </div>
             <button id="password_change">Change password</button>
 
             <form method="POST" action="{{ route('logout') }}">
