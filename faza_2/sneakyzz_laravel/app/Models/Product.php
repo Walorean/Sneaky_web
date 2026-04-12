@@ -18,7 +18,6 @@ class Product extends Model
         'basic_info',
         'origin',
         'price',
-        'image'
     ];
 
     public function category(){

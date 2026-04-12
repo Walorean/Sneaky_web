@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('product_code', 10);
             $table->string('filename',512);
             $table->timestamps();
-            $table->foreign('product_code')->references('id')->on('shoes');
+            $table->foreign('product_code')->references('product_code')->on('products');
         });
     }
 

@@ -18,7 +18,11 @@
             @foreach($men_products as $product)
                 <div class="product-card" onclick="window.location='{{ route('product.show', $product->product_code) }}'">
                     <div class="product-image-box">
-                        <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                        @if($product->image->isNotEmpty())
+                            <img src="{{ Vite::asset('resources/assets/' . $product->image->first()->filename) }}" alt="{{ $product->name }}">
+                        @else
+                            <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                        @endif
                     </div>
                     <div class="product-info">
                         <div class="product-name">{{ $product->name }}</div>
@@ -34,7 +38,11 @@
             @foreach($women_products as $product)
                 <div class="product-card" onclick="window.location='{{ route('product.show', $product->product_code) }}'">
                     <div class="product-image-box">
-                        <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                        @if($product->image->isNotEmpty())
+                            <img src="{{ Vite::asset('resources/assets/' . $product->image->first()->filename) }}" alt="{{ $product->name }}">
+                        @else
+                            <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                        @endif
                     </div>
                     <div class="product-info">
                         <div class="product-name">{{ $product->name }}</div>

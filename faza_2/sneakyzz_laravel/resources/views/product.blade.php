@@ -9,7 +9,11 @@
             <div class="product_main_card">
                 <div class="product_info_section">
                     <div class="main-product-card">
-                        <img id="product-photo" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="">
+                        @if($product->image->isNotEmpty())
+                            <img id="product-photo" src="{{ Vite::asset('resources/assets/' . $product->image->first()->filename) }}" alt="{{ $product->name }}">
+                        @else
+                            <img id="product-photo" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                        @endif
                         <div class="product-info-right">
                             <div class="product_page_info">
                                 <div class="product_header">
@@ -43,7 +47,7 @@
                                 <h4>SIZE OPTIONS</h4>
                                 <div class="sizes">
                                     @forelse($sizes as $shoe)
-                                        <button>{{ $shoe->size->value }}</button>
+                                        <button>{{ $shoe->size->size }}</button>
                                     @empty
                                         <p>No sizes available for this color</p>
                                     @endforelse
@@ -55,7 +59,7 @@
                     <div class="product-info-buttom">
                         <div class="product_quantity">
                             <h3>Choose quantity:</h3>
-                            <input class="quantity-choose" type="number" value="1" min="1" max="10">
+                            <input class="quantity-choose" type="number" value="1" min="1" max="{{ $totalStock }}">
                         </div>
                         <button>ADD TO CART</button>
                     </div>
@@ -69,7 +73,11 @@
                 @foreach($related_products as $related)
                     <div class="product-card" onclick="window.location='{{ route('product.show', $related->product_code) }}'">
                         <div class="product-image-box">
-                            <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $related->name }}">
+                            @if($related->image->isNotEmpty())
+                                <img id="product-photo" src="{{ Vite::asset('resources/assets/' . $related->image->first()->filename) }}" alt="{{ $related->name }}">
+                            @else
+                                <img id="product-photo" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $related->name }}">
+                            @endif
                         </div>
                         <div class="product-info">
                             <div class="product-name">{{ $related->name }}</div>

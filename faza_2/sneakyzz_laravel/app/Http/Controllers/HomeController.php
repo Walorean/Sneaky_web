@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index_display(){
-        $men_products = Product::whereHas('category', function($q) {
+        $men_products = Product::with('image')->whereHas('category', function($q) {
             $q->where('name', 'men');
         })->take(4)->get();
 
-        $women_products = Product::whereHas('category', function($q) {
+        $women_products = Product::with('image')->whereHas('category', function($q) {
             $q->where('name', 'women');
         })->take(4)->get();
 
