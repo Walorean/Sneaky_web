@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Login;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
 return view('index');
@@ -19,3 +21,7 @@ Route::get('/profile', [Register::class, 'showProfile'])
 ->middleware('auth');
 
 Route::post('/logout', [Register::class, 'logout'])->name('logout');
+
+Route::get('/', [HomeController::class, 'index_display'])->name('home');
+
+Route::get('/product/{product_code}/{color_id?}', [ProductController::class, 'show'])->name('product.show');

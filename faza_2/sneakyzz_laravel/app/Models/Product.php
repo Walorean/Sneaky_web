@@ -18,6 +18,7 @@ class Product extends Model
         'basic_info',
         'origin',
         'price',
+        'image'
     ];
 
     public function category(){
@@ -29,7 +30,12 @@ class Product extends Model
     public function brand() {
         return $this->belongsTo(Brand::class, 'brand_id', 'brand_id');
     }
-    public function shoes() {                                        // ← premenuj z 'product' na 'shoes'
+    public function shoes() {
         return $this->hasMany(Shoe::class, 'product_code', 'product_code');
     }
+
+    public function image() {
+        return $this->hasMany(Image::class, 'product_code', 'product_code');
+    }
+
 }

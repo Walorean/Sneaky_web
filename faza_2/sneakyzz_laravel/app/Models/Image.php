@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $primaryKey = 'image_id';
-    protected $fillable = ['filename', 'shoe_id'];
+    protected $fillable = ['filename', 'product_code'];
 
-    public function shoe() {
-        return $this->belongsTo(Shoe::class, 'shoe_id', 'id');
+    public function product() {
+        return $this->belongsTo(Product::class, 'product_code', 'product_code');
     }
 }
