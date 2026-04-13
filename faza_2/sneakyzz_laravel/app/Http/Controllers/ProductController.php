@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -37,5 +38,89 @@ class ProductController extends Controller
             ->first();
 
         return view('product', compact('product', 'colors', 'sizes', 'selectedColor', 'related_products', 'selectedShoe', 'totalStock'));
+    }
+
+    public function category($name, Request $request){
+        $query = Product::with('image')
+            ->whereHas('category', function($q) use ($name) {
+                $q->where('name', $name);
+            });
+
+        if($request->filled('min_price')) {
+            $query->where('price', '>=', $request->min_price);
+        }
+        if($request->filled('max_price')) {
+            $query->where('price', '<=', $request->max_price);
+        }
+
+        if($request->filled('min_size') || $request->filled('max_size')) {
+            $query->whereHas('shoes.size', function($q) use ($request) {
+                if($request->filled('min_size')) {
+                    $q->where('size', '>=', $request->min_size);
+                }
+                if($request->filled('max_size')) {
+                    $q->where('size', '<=', $request->max_size);
+                }
+            });
+        }
+
+        if($request->filled('brand')) {
+            $query->where('brand', $request->brand);
+        }
+
+        if($request->filled('sort')) {
+            if($request->sort === 'price-asc') {
+                $query->orderBy('price', 'asc');
+            } elseif($request->sort === 'price-desc') {
+                $query->orderBy('price', 'desc');
+            }
+        }
+
+        $products = $query->paginate(12);
+        $brands = Brand::all();
+
+        return view('category', compact('products', 'name', 'brands'));
+    }
+
+    public function search(Request $request)
+    {
+        $query_string = $request->input('query');
+
+        if(empty($query_string)) {
+            return redirect()->route('home');
+        }
+
+        $query = Product::with('image')
+            ->where(function($q) use ($query_string) {
+                $q->where('name', 'LIKE', '%' . $query_string . '%')
+                    ->orWhere('product_code', 'LIKE', '%' . $query_string . '%')
+                    ->orWhere('basic_info', 'LIKE', '%' . $query_string . '%')
+                    ->orWhere('origin', 'LIKE', '%' . $query_string . '%');
+            });
+
+        if($request->filled('min_price')) {
+            $query->where('price', '>=', $request->min_price);
+        }
+        if($request->filled('max_price')) {
+            $query->where('price', '<=', $request->max_price);
+        }
+
+        if($request->filled('brand')) {
+            $query->where('brand', $request->brand);
+        }
+
+        if($request->filled('sort')) {
+            if($request->sort === 'price-asc') {
+                $query->orderBy('price', 'asc');
+            } elseif($request->sort === 'price-desc') {
+                $query->orderBy('price', 'desc');
+            }
+        }
+
+        $products = $query->paginate(12);
+        $name = 'Results for "' . $query_string . '"';
+        $brands = Brand::all();
+
+        return view('category', compact('products', 'name', 'brands'));
     }
 }

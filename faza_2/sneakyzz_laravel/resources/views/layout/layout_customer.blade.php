@@ -10,10 +10,10 @@
 <body>
 <header class="header">
     <a href="{{route('home')}}"><h1>SNEAKYZZ</h1></a>
-    <div class = "search_box">
-        <input type="text" id="search" placeholder="Search product...">
-        <button id="search_button">🔍</button>
-    </div>
+    <form method="GET" action="{{ route('product.search') }}">
+        <input type="text" id="search" name="query" placeholder="Search product..." value="{{ request('query') }}">
+        <button type="submit" id="search_button">🔍</button>
+    </form>
     <div class="main_buttons">
         <button id="likes" onclick="location.href='liked_page.html'"><img src="{{ Vite::asset('resources/assets/like.png') }}" alt="LikedPageImage"></button>
         <button id="cart" onclick="location.href='shopping_cart.html'"><img src="{{ Vite::asset('resources/assets/cart.png') }}" alt="CartPageImage"></button>
@@ -28,10 +28,10 @@
 </header>
 <nav class="navbar">
     <div class="navbar_buttons">
-        <button onclick="location.href='category_products_page.html'"><strong>NEW</strong></button>
-        <button onclick="location.href='category_products_page.html'"><strong>MEN</strong></button>
-        <button onclick="location.href='category_products_page.html'"><strong>WOMEN</strong></button>
-        <button onclick="location.href='category_products_page.html'"><strong>SPORT</strong></button>
+        <button onclick="window.location='{{ route('category', 'men') }}'"><strong>MEN</strong></button>
+        <button onclick="window.location='{{ route('category', 'women') }}'"><strong>WOMEN</strong></button>
+        <button onclick="window.location='{{ route('category', 'sport') }}'"><strong>SPORT</strong></button>
+        <button onclick="window.location='{{ route('category', 'new') }}'"><strong>NEW</strong></button>
     </div>
 </nav>
 <main class="main_container">

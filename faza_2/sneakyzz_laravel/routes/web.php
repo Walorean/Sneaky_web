@@ -8,9 +8,14 @@ Route::get('/', function () {
 return view('index');
 })->name('home');
 
+Route::get('/category/{name}', [ProductController::class, 'category'])->name('category');
+
 Route::get('/login', function () {
 return view('auth.login');
 })->name('login');
+
+Route::get('/search', [ProductController::class, 'search'])->name('product.search');
+
 
 Route::get('/register', [Register::class, 'showForm'])->name('register');
 Route::post('/register', [Register::class, 'register'])->name('register.submit');
