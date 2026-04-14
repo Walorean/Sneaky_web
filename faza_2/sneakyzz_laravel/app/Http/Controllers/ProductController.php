@@ -94,7 +94,6 @@ class ProductController extends Controller
             ->where(function($q) use ($query_string) {
                 $q->where('name', 'LIKE', '%' . $query_string . '%')
                     ->orWhere('product_code', 'LIKE', '%' . $query_string . '%')
-                    ->orWhere('basic_info', 'LIKE', '%' . $query_string . '%')
                     ->orWhere('origin', 'LIKE', '%' . $query_string . '%');
             });
 

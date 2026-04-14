@@ -5,6 +5,14 @@
             <h2><strong>Sign in:</strong></h2>
             <form method="POST" action="{{ route('login.submit') }}">
                 @csrf
+
+                @if ($errors->any())
+                    <div class="errors">
+                        @foreach ($errors->all() as $error)
+                            <p style="color:red">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
                 <div class="sign_in_email_container">
                     <div class="enter_email_text">Enter email:</div>
                     <input type="email" name="email" id="email_sign" placeholder="Email...">

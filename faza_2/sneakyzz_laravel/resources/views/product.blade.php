@@ -47,7 +47,11 @@
                                 <h4>SIZE OPTIONS</h4>
                                 <div class="sizes">
                                     @forelse($sizes as $shoe)
-                                        <button>{{ $shoe->size->size }}</button>
+                                        <button class="size-btn"
+                                                data-shoe-id="{{ $shoe->id }}"
+                                                data-size="{{ $shoe->size->size }}">
+                                            {{ $shoe->size->size }}
+                                        </button>
                                     @empty
                                         <p>No sizes available for this color</p>
                                     @endforelse
@@ -61,7 +65,19 @@
                             <h3>Choose quantity:</h3>
                             <input class="quantity-choose" type="number" value="1" min="1" max="{{ $totalStock }}">
                         </div>
-                        <button>ADD TO CART</button>
+
+                        <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="shoe_id" id="selected-shoe-id" value="">
+                            <input type="hidden" name="quantity" id="selected-quantity" value="1">
+                            {{-- Pre guest session --}}
+                            <input type="hidden" name="product_name" value="{{ $product->name }}">
+                            <input type="hidden" name="price" value="{{ $product->price }}">
+                            <input type="hidden" name="color" value="{{ $selectedColor }}">
+                            <input type="hidden" name="size" id="selected-size" value="">
+
+                            <button type="submit">ADD TO CART</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -89,3 +105,6 @@
         </section>
     </section>
 @endsection
+@push('scripts')
+    @vite(['resources/js/product_page.js'])
+@endpush
