@@ -70,8 +70,8 @@
                                 </div>
 
                                 <div class="item_discription_cont">
-                                    @if($item->shoe->product->image->isNotEmpty())
-                                        <img class="item_img" src="{{ Vite::asset('resources/assets/' . $item->shoe->product->image->first()->filename) }}">
+                                    @if($item['image'])
+                                        <img class="item_img" src="{{ Vite::asset('resources/assets/' . $item['image']) }}" alt="{{ $item['product_name'] }}">
                                     @else
                                         <img class="item_img" src="{{ Vite::asset('resources/assets/black_shoes.png') }}">
                                     @endif
@@ -82,7 +82,7 @@
                                 </div>
 
                                 <div class="availability_cont">
-                                    <h5>In stock:</h5>
+                                    <h5>In stock</h5>
                                     <h5>{{ $item->shoe->stock }}</h5>
                                 </div>
 
@@ -122,7 +122,7 @@
 
                                 <div class="item_discription_cont">
                                     @if($item['image'])
-                                        <img class="item_img" src="{{ Vite::asset('resources/assets/' . $item['image']) }}">
+                                        <img class="item_img"  src="{{ Vite::asset('resources/assets/' . $item['image']) }}" alt="{{ $item['product_name'] }}">
                                     @else
                                         <img class="item_img" src="{{ Vite::asset('resources/assets/black_shoes.png') }}">
                                     @endif

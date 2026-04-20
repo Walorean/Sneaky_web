@@ -10,10 +10,33 @@
                 <div class="product_info_section">
                     <div class="main-product-card">
                         @if($product->image->isNotEmpty())
-                            <img id="product-photo" src="{{ Vite::asset('resources/assets/' . $product->image->first()->filename) }}" alt="{{ $product->name }}">
+                            <div class="image-slider">
+                                <img id="product-photo" src="{{ Vite::asset('resources/assets/' . $selectedImage->filename) }}" alt="{{ $product->name }}">
+
+                                <button class="arrow left-arrow"><</button>
+                                <button class="arrow right-arrow">></button>
+
+                                <div class="dots_pr">
+                                    <span class="dot active_dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
                         @else
-                            <img id="product-photo" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                            <div class="image-slider">
+                                <img id="product-photo" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+
+                                <button class="arrow left-arrow"><</button>
+                                <button class="arrow right-arrow">></button>
+
+                                <div class="dots_pr">
+                                    <span class="dot active_dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
                         @endif
+
                         <div class="product-info-right">
                             <div class="product_page_info">
                                 <div class="product_header">
@@ -49,7 +72,8 @@
                                     @forelse($sizes as $shoe)
                                         <button class="size-btn"
                                                 data-shoe-id="{{ $shoe->id }}"
-                                                data-size="{{ $shoe->size->size }}">
+                                                data-size="{{ $shoe->size->size }}"
+                                                data-stock="{{ $shoe->stock_quantity }}">
                                             {{ $shoe->size->size }}
                                         </button>
                                     @empty
@@ -63,14 +87,14 @@
                     <div class="product-info-buttom">
                         <div class="product_quantity">
                             <h3>Choose quantity:</h3>
-                            <input class="quantity-choose" type="number" value="1" min="1" max="{{ $totalStock }}">
+                            <input class="quantity-choose" type="number" value="1" min="1"
+                                   max="{{ $sizes->first()?->stock_quantity ?? 1 }}">
                         </div>
 
                         <form id="add-to-cart-form" action="{{ route('cart.add') }}" method="POST">
                             @csrf
                             <input type="hidden" name="shoe_id" id="selected-shoe-id" value="">
                             <input type="hidden" name="quantity" id="selected-quantity" value="1">
-                            {{-- Pre guest session --}}
                             <input type="hidden" name="product_name" value="{{ $product->name }}">
                             <input type="hidden" name="price" value="{{ $product->price }}">
                             <input type="hidden" name="color" value="{{ $selectedColor }}">
@@ -86,20 +110,25 @@
         <section class="catalogue_products">
             <h1>YOU MAY ALSO LIKE:</h1>
             <div class="products_category">
-                @foreach($related_products as $related)
-                    <div class="product-card" onclick="window.location='{{ route('product.show', $related->product_code) }}'">
-                        <div class="product-image-box">
-                            @if($related->image->isNotEmpty())
-                                <img id="product-photo" src="{{ Vite::asset('resources/assets/' . $related->image->first()->filename) }}" alt="{{ $related->name }}">
-                            @else
-                                <img id="product-photo" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $related->name }}">
-                            @endif
+                @foreach($related_products as $product)
+                    @foreach($product->shoes->unique('color_id') as $shoe)
+                        @php
+                            $image = $product->image->where('color_id', $shoe->color_id)->first();
+                        @endphp
+                        <div class="product-card" onclick="window.location='{{ route('product.show', [$product->product_code, $shoe->color_id]) }}'">
+                            <div class="product-image-box">
+                                @if($image)
+                                    <img src="{{ Vite::asset('resources/assets/' . $image->filename) }}" alt="{{ $shoe->color->name }}">
+                                @else
+                                    <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                                @endif
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">{{ $product->name}}, {{$shoe->color->name}}</div>
+                                <div class="product-price">{{ $product->price }}€</div>
+                            </div>
                         </div>
-                        <div class="product-info">
-                            <div class="product-name">{{ $related->name }}</div>
-                            <div class="product-price">{{ $related->price }}€</div>
-                        </div>
-                    </div>
+                    @endforeach
                 @endforeach
             </div>
         </section>

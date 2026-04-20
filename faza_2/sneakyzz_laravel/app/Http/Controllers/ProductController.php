@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,10 @@ class ProductController extends Controller
 
         $selectedColor = $color_id ?? $colors->first()->color_id;
 
+        $selectedImage = Image::where('product_code', $product_code)
+            ->where('color_id', $selectedColor)
+            ->first();
+
         $sizes = $product->shoes
             ->where('color_id', $selectedColor)
             ->where('stock_quantity', '>', 0);
@@ -26,9 +31,10 @@ class ProductController extends Controller
             ->where('color_id', $selectedColor)
             ->sum('stock_quantity');
 
-        $related_products = Product::whereHas('category', function($q) use ($product) {
-            $q->whereIn('name', $product->category->pluck('name'));
-        })
+        $related_products = Product::with(['shoes.color', 'image'])
+            ->whereHas('category', function($q) use ($product) {
+                $q->whereIn('name', $product->category->pluck('name'));
+            })
             ->where('product_code', '!=', $product_code)
             ->take(6)
             ->get();
@@ -37,14 +43,29 @@ class ProductController extends Controller
             ->where('color_id', $selectedColor)
             ->first();
 
-        return view('product', compact('product', 'colors', 'sizes', 'selectedColor', 'related_products', 'selectedShoe', 'totalStock'));
+        return view('product', compact('product', 'colors', 'sizes', 'selectedColor', 'related_products', 'selectedShoe', 'totalStock', 'selectedImage'));
     }
 
     public function category($name, Request $request){
-        $query = Product::with('image')
+        $query = Product::with(['shoes.color', 'image'])
             ->whereHas('category', function($q) use ($name) {
                 $q->where('name', $name);
             });
+
+        $min_filter_price = 0;
+        $max_filter_price = 0;
+
+
+        foreach ($query->get() as $product) {
+            if ($min_filter_price > $product->price) {
+                $min_filter_price = $product->price;
+            }
+        }
+        foreach ($query->get() as $product) {
+            if ($max_filter_price < $product->price) {
+                $max_filter_price = $product->price;
+            }
+        }
 
         if($request->filled('min_price')) {
             $query->where('price', '>=', $request->min_price);
@@ -79,7 +100,7 @@ class ProductController extends Controller
         $products = $query->paginate(12);
         $brands = Brand::all();
 
-        return view('category', compact('products', 'name', 'brands'));
+        return view('category', compact('products', 'name', 'brands', 'max_filter_price', 'min_filter_price'));
     }
 
     public function search(Request $request)
@@ -90,7 +111,7 @@ class ProductController extends Controller
             return redirect()->route('home');
         }
 
-        $query = Product::with('image')
+        $query = Product::with(['shoes.color', 'image'])
             ->where(function($q) use ($query_string) {
                 $q->where('name', 'LIKE', '%' . $query_string . '%')
                     ->orWhere('product_code', 'LIKE', '%' . $query_string . '%')

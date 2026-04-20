@@ -19,6 +19,10 @@ class Shoe extends Model
         return $this->belongsTo(Color::class, 'color_id', 'color_id');
     }
 
+    public function images() {
+        return $this->hasMany(Image::class, 'product_code', 'product_code')->where('color_id', $this->color_id);
+    }
+
 //    public function orderItems() {
 //        return $this->hasMany(OrderItem::class, 'shoe_id', 'shoe_id');
 //    }

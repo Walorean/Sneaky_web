@@ -34,12 +34,12 @@
     border: 1px solid black;
     border-radius: 4px;
     padding: 3px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .filter-price-input::placeholder, .filter-size-input::placeholder{
     color: black;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 .filter-price-input:focus,

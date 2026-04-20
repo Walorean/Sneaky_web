@@ -51,11 +51,15 @@ body, html{
 #search_button{
     background:#A70FEB;
     width:50px;
+    height:40px;
     border:2px solid #312E33;
     cursor:pointer;
     transition: 0.2s;
     border-radius:8px;
+    font-size: 20px;
 }
+
+
 
 #search_button:hover{
     background:#912CC0;

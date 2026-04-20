@@ -55,7 +55,7 @@ class CartController extends Controller{
             if (isset($cart[$key])) {
                 $cart[$key]['quantity'] += ($request->quantity ?? 1);
             } else {
-                $shoe =Shoe::with('product.image', 'size', 'color')->findOrFail($request->shoe_id);
+                $shoe = Shoe::with(['product.image', 'size', 'color'])->findOrFail($request->shoe_id);
 
                 $cart[$key] = [
                     'shoe_id'      => $request->shoe_id,
@@ -63,9 +63,7 @@ class CartController extends Controller{
                     'price'        => $shoe->product->price,
                     'size'         => $shoe->size->size,
                     'color'        => $shoe->color->name,
-                    'image'        => $shoe->product->image->isNotEmpty()
-                        ? $shoe->product->image->first()->filename
-                        : null,
+                    'image' => $shoe->product->image->where('color_id', $shoe->color_id)->first()?->filename,
                     'stock'        => $shoe->stock_quantity,
                     'quantity'     => (int)($request->quantity ?? 1),
                 ];
@@ -73,7 +71,7 @@ class CartController extends Controller{
             session()->put('cart', $cart);
         }
 
-        return redirect()->back()->with('success', 'Added to cart!');
+        return redirect()->route('cart');
     }
 
     public function remove(Request $request)
