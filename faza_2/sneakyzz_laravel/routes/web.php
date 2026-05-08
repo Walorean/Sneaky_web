@@ -36,4 +36,10 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
-Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear')
+;
+Route::get('/delivery', [CartController::class, 'delivery'])->name('cart.delivery');
+Route::post('/delivery', [CartController::class, 'saveDelivery'])->name('cart.delivery.save');
+
+Route::get('/address', [CartController::class, 'address'])->name('cart.address');
+Route::post('/address', [CartController::class, 'saveAddress'])->name('cart.address.save');

@@ -168,4 +168,47 @@ class CartController extends Controller{
         return redirect()->back();
     }
 
+    public function delivery()
+    {
+        $total = auth()->check()
+            ? $this->getCart()->total_price
+            : collect(session('cart', []))->sum(fn($item) => $item['price'] * $item['quantity']);
+
+        return view('cart_delivery', compact('total'));
+    }
+
+    public function saveDelivery(Request $request)
+    {
+        $validated = $request->validate([
+            'delivery' => 'required|in:pickup,delivery',
+            'payment' => 'required|in:card,cash',
+            'store' => 'nullable|string'
+        ]);
+
+        session()->put('checkout.delivery', $validated['delivery']);
+        session()->put('checkout.payment', $validated['payment']);
+        session()->put('checkout.store', $validated['store'] ?? null);
+
+        return redirect()->route('cart.address');
+    }
+
+    public function address()
+    {
+        return view('cart_address');
+    }
+
+    public function saveAddress(Request $request)
+    {
+        if (session('checkout.delivery') === 'delivery') {
+            $validated = $request->validate([
+                'address' => 'required|string|max:255',
+                'city' => 'required|string|max:255',
+                'zip' => 'required|string|max:20',
+            ]);
+
+            session()->put('checkout.address', $validated);
+        }
+
+        return redirect()->route('cart.summary');
+    }
 }

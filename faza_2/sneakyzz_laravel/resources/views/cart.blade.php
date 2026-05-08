@@ -163,7 +163,19 @@
                             {{ collect($items)->sum(fn($i) => $i['price'] * $i['quantity']) }} €
                         @endif
                     </h4>
-                    <button class="next_step">Next step</button>
+                    @if(count($items) > 0)
+                        <button
+                            class="next_step"
+                            type="button"
+                            onclick="window.location='{{ route('cart.delivery') }}'"
+                        >
+                            Next step
+                        </button>
+                    @else
+                        <button class="next_step" type="button" disabled>
+                            Cart is empty
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>
