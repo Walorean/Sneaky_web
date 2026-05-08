@@ -136,7 +136,7 @@ class CartController extends Controller{
         $cart->update(['total_price' => $total]);
     }
 
-    private function mergeSessionCart(Order $cart)
+    public function mergeSessionCart(Order $cart)
     {
         $sessionCart = session()->get('cart', []);
         foreach ($sessionCart as $shoe_id => $item) {
