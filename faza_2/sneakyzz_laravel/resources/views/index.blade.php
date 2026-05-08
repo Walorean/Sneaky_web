@@ -1,10 +1,10 @@
 @extends('layout.layout_customer')
 @section('content')
-    <div class="hero-ad">
+    <div class="hero-ad" id="hero-ad">
         <div class="banner">
-            <button class="arrows left-arrow"><</button>
-            <button class="arrows right-arrow">></button>
-            <div class="dots">
+            <button class="arrows left-arrow" onclick="changeSlide(-1)"><</button>
+            <button class="arrows right-arrow" onclick="changeSlide(1)">></button>
+            <div class="dots" id="dots-container">
                 <span class="dot active_dot"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>
@@ -64,3 +64,13 @@
         <img id="women_main_picture" src="{{ Vite::asset('resources/assets/sneaker_men.png') }}" alt="">
     </section>
 @endsection
+@push('scripts')
+    <script>
+        window.sliderImages = [
+            "{{ Vite::asset('resources/assets/sneaker_men.png') }}",
+            "{{ Vite::asset('resources/assets/yellow_shoes.png') }}",
+            "{{ Vite::asset('resources/assets/black_shoes.png') }}",
+        ];
+    </script>
+    @vite(['resources/js/slides.js'])
+@endpush
