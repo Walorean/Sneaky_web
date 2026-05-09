@@ -43,3 +43,6 @@ Route::post('/delivery', [CartController::class, 'saveDelivery'])->name('cart.de
 
 Route::get('/address', [CartController::class, 'address'])->name('cart.address');
 Route::post('/address', [CartController::class, 'saveAddress'])->name('cart.address.save');
+
+Route::get('/summary', [CartController::class, 'summary'])->name('cart.summary');
+Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');

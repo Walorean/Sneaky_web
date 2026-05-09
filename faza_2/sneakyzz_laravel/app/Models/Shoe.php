@@ -20,7 +20,7 @@ class Shoe extends Model
     }
 
     public function images() {
-        return $this->hasMany(Image::class, 'product_code', 'product_code')->where('color_id', $this->color_id);
+        return $this->hasMany(Image::class, 'product_code', 'product_code');
     }
 
 //    public function orderItems() {

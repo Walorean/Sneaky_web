@@ -60,10 +60,10 @@
                             </label>
                             <div id="cardForm" style="display:none;">
                                 <select class="brand-select" name="store">
-                                    <option value="" disabled selected>-- choose store --</option>
-                                    <option value="Bratislava, Jankova 36">Bratislava, Jankova 36</option>
-                                    <option value="Poprad, Bilava 67">Poprad, Bilava 67</option>
-                                    <option value="Bardejov, Partizanska 45">Bardejov, Partizanska 45</option>
+                                    <option value="" disabled {{ !session('checkout.store') ? 'selected' : '' }}>-- choose store --</option>
+                                    <option value="Bratislava, Jankova 36" {{ session('checkout.store') === 'Bratislava, Jankova 36' ? 'selected' : '' }}>Bratislava, Jankova 36</option>
+                                    <option value="Poprad, Bilava 67" {{ session('checkout.store') === 'Poprad, Bilava 67' ? 'selected' : '' }}>Poprad, Bilava 67</option>
+                                    <option value="Bardejov, Partizanska 45" {{ session('checkout.store') === 'Bardejov, Partizanska 45' ? 'selected' : '' }}>Bardejov, Partizanska 45</option>
                                 </select>
                             </div>
                             <label class="option-card">
