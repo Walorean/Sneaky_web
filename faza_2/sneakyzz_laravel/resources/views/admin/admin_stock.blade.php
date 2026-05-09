@@ -8,7 +8,7 @@
             <h2>Your Stock</h2>
 
             @if(session('success'))
-                <p style="color:green">{{ session('success') }}</p>
+                <p style="color:#2dff2d">{{ session('success') }}</p>
             @endif
 
             <div class="card_items">
@@ -25,8 +25,8 @@
                         <div class="quantity_cont">
                             <button class="edit_item" title="Edit"> ✏️ </button>
 
-                            {{-- ✅ delete button --}}
                             <form method="POST"
+                                  action="{{ route('admin.product.delete', $product->product_code) }}"
                                   onsubmit="return confirm('Are you sure you want to delete {{$product->name}}?')">
                                 @csrf
                                 @method('DELETE')

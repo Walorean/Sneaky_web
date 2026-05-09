@@ -35,6 +35,17 @@ class AdminController extends Controller
         return view('admin.admin_stock', compact('products'));
     }
 
+    public function deleteProduct($product_code)
+    {
+        $product = Product::where('product_code', $product_code)->firstOrFail();
+        $product->shoes()->delete();
+        $product->image()->delete();
+        $product->category()->detach();
+        $product->delete();
+
+        return redirect()->back()->with('success', 'Product deleted successfully');
+    }
+
     public function store(Request $request)
     {
 
