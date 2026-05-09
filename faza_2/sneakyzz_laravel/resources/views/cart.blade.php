@@ -53,6 +53,9 @@
 
                     @if(auth()->check())
                         @forelse($items as $item)
+                            @php
+                                $image = $item->shoe->images->where('color_id', $item->shoe->color_id)->first();
+                            @endphp
                             <div class="cart_item_cont">
                                 <div class="quantity_cont">
                                     <form action="{{ route('cart.update') }}" method="POST">
@@ -70,10 +73,10 @@
                                 </div>
 
                                 <div class="item_discription_cont">
-                                    @if($item['image'])
-                                        <img class="item_img" src="{{ Vite::asset('resources/assets/' . $item['image']) }}" alt="{{ $item['product_name'] }}">
+                                    @if($image)
+                                        <img class="item_img" src="{{ Vite::asset('resources/assets/' . $image->filename) }}" alt="{{ $item->shoe->product->name }}">
                                     @else
-                                        <img class="item_img" src="{{ Vite::asset('resources/assets/black_shoes.png') }}">
+                                        <img class="item_img" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $item->shoe->product->name }}">
                                     @endif
                                     <div class="item_text">
                                         <h5>{{ $item->shoe->product->name }}</h5>
@@ -163,7 +166,19 @@
                             {{ collect($items)->sum(fn($i) => $i['price'] * $i['quantity']) }} €
                         @endif
                     </h4>
-                    <button class="next_step">Next step</button>
+                    @if(count($items) > 0)
+                        <button
+                            class="next_step"
+                            type="button"
+                            onclick="window.location='{{ route('cart.delivery') }}'"
+                        >
+                            Next step
+                        </button>
+                    @else
+                        <button class="next_step" type="button" disabled>
+                            Cart is empty
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>

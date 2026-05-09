@@ -27,14 +27,18 @@ class CartController extends Controller{
     {
         if (auth()->check()) {
             $cart  = $this->getCart();
-            $items = $cart->orderItems()->with('shoe.product', 'shoe.size', 'shoe.color')->get();
+            $items = $cart->orderItems()->with([
+                'shoe.images',
+                'shoe.product',
+                'shoe.size',
+                'shoe.color'
+            ])->get();
         } else {
             $items = session()->get('cart', []);
         }
 
         return view('cart', compact('items'));
     }
-
     public function add(Request $request)
     {
         if (auth()->check()) {
@@ -104,28 +108,6 @@ class CartController extends Controller{
         return redirect()->route('cart');
     }
 
-    // When user checks out → change status from 0 to 1
-//    public function checkout(Request $request)
-//    {
-//        $cart = $this->getCart();
-//
-//        // Najprv merge, potom checkout
-//        $this->mergeSessionCart($cart); // ← presuň hore
-//
-//        $cart->update([
-//            'status'           => 1,
-//            'payed_by_card'    => $request->payed_by_card,
-//            'deliver_to_store' => $request->deliver_to_store,
-//            'address'          => $request->address,
-//            'user_name'        => auth()->user()->name,
-//            'user_surname'     => auth()->user()->surname,
-//            'user_phone_num'   => auth()->user()->phone_num,
-//            'user_email'       => auth()->user()->email,
-//        ]);
-//
-//        return redirect()->route('order.confirm', $cart->id);
-//    }
-
     private function recalculateTotal(Order $cart)
     {
         $total = $cart->orderItems()
@@ -136,7 +118,7 @@ class CartController extends Controller{
         $cart->update(['total_price' => $total]);
     }
 
-    private function mergeSessionCart(Order $cart)
+    public function mergeSessionCart(Order $cart)
     {
         $sessionCart = session()->get('cart', []);
         foreach ($sessionCart as $shoe_id => $item) {
@@ -166,6 +148,151 @@ class CartController extends Controller{
             session()->put('cart', $cart);
         }
         return redirect()->back();
+    }
+
+    public function delivery()
+    {
+        $total = auth()->check()
+            ? $this->getCart()->total_price
+            : collect(session('cart', []))->sum(fn($item) => $item['price'] * $item['quantity']);
+
+        return view('cart_delivery', compact('total'));
+    }
+
+    public function saveDelivery(Request $request)
+    {
+        $validated = $request->validate([
+            'delivery' => 'required|in:pickup,delivery',
+            'payment' => 'required|in:card,cash',
+            'store' => 'nullable|string'
+        ]);
+
+        session()->put('checkout.delivery', $validated['delivery']);
+        session()->put('checkout.payment', $validated['payment']);
+        session()->put('checkout.store', $validated['store'] ?? null);
+
+        return redirect()->route('cart.address');
+    }
+
+    public function address()
+    {
+        if (auth()->check()) {
+            $cart  = $this->getCart();
+            $items = $cart->orderItems()->with([
+                'shoe.images',
+                'shoe.product',
+                'shoe.size',
+                'shoe.color'
+            ])->get();
+            $total = $cart->total_price;
+        } else {
+            $items = session()->get('cart', []);
+            $total = collect($items)->sum(fn($i) => $i['price'] * $i['quantity']);
+        }
+
+        return view('cart_address', compact('items', 'total'));
+    }
+
+    public function saveAddress(Request $request)
+    {
+        $rules = [
+            'name'    => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'phone'   => 'required|string|max:50',
+        ];
+
+        if (session('checkout.delivery') === 'delivery') {
+            $rules['street']        = 'required|string|max:255';
+            $rules['street_number'] = 'required|string|max:50';
+            $rules['city']          = 'required|string|max:255';
+            $rules['zip']           = 'required|string|max:20';
+        }
+
+        $validated = $request->validate($rules);
+        session()->put('checkout.address', $validated);
+
+        return redirect()->route('cart.summary');
+    }
+
+    public function summary()
+    {
+        if (auth()->check()) {
+            $cart  = $this->getCart();
+            $items = $cart->orderItems()->with('shoe.product', 'shoe.size', 'shoe.color')->get();
+            $total = $cart->total_price;
+        } else {
+            $cart  = null;
+            $items = session()->get('cart', []);
+            $total = collect($items)->sum(fn($i) => $i['price'] * $i['quantity']);
+        }
+
+        return view('cart_summary', [
+            'cart'     => $cart,
+            'items'    => $items,
+            'total'    => $total,
+            'checkout' => session('checkout'),
+        ]);
+    }
+    public function checkout(Request $request)
+    {
+        $delivery = session('checkout.delivery');
+        $payment  = session('checkout.payment');
+
+        if (auth()->check()) {
+            $cart = $this->getCart();
+
+            $cart->update([
+                'status'           => 1,
+                'payed_by_card'    => $payment === 'card',
+                'deliver_to_store' => $delivery === 'pickup',
+                'address'          => $delivery === 'delivery'
+                    ? implode(', ', session('checkout.address', []))
+                    : session('checkout.store'),
+                'user_name'        => auth()->user()->name,
+                'user_surname'     => auth()->user()->surname,
+                'user_phone_num'   => auth()->user()->phone_num,
+                'user_email'       => auth()->user()->email,
+            ]);
+
+        } else {
+            $guestItems = session('cart', []);
+
+            if (empty($guestItems)) {
+                return redirect()->back()->with('error', 'Your cart is empty.');
+            }
+
+            $order = \App\Models\Order::create([
+                'status'           => 1,
+                'payed_by_card'    => $payment === 'card',
+                'deliver_to_store' => $delivery === 'pickup',
+                'address'          => $delivery === 'delivery'
+                    ? implode(', ', session('checkout.address', []))
+                    : session('checkout.store'),
+                'user_id'          => null,
+                'store_id'         => null,
+                'total_price'      => collect($guestItems)->sum(fn($i) => $i['price'] * $i['quantity']),
+                'user_name'        => null,
+                'user_surname'     => null,
+                'user_phone_num'   => null,
+                'user_email'       => null,
+            ]);
+
+            foreach ($guestItems as $item) {
+                $order->orderItems()->create([
+                    'shoe_id'  => $item['shoe_id'],
+                    'quantity' => $item['quantity'],
+                    'price'    => $item['price'],
+                ]);
+            }
+
+            session()->forget('cart');
+        }
+
+        session()->forget('checkout');
+
+        return redirect()->route('home')
+            ->with('success', 'Order successfully created!');
     }
 
 }
