@@ -17,7 +17,7 @@ class ProductController extends Controller
 
         $colors = $product->shoes->pluck('color')->unique('color_id');
 
-        $selectedColor = $color_id ?? $colors->first()->color_id;
+        $selectedColor = (int)$color_id ?? (int)$colors->first()->color_id;
 
         $selectedImage = Image::where('product_code', $product_code)
             ->where('color_id', $selectedColor)
@@ -111,12 +111,29 @@ class ProductController extends Controller
             return redirect()->route('home');
         }
 
+
+
         $query = Product::with(['shoes.color', 'image'])
             ->where(function($q) use ($query_string) {
                 $q->where('name', 'LIKE', '%' . $query_string . '%')
                     ->orWhere('product_code', 'LIKE', '%' . $query_string . '%')
                     ->orWhere('origin', 'LIKE', '%' . $query_string . '%');
             });
+
+        $min_filter_price = 0;
+        $max_filter_price = 0;
+
+
+        foreach ($query->get() as $product) {
+            if ($min_filter_price > $product->price) {
+                $min_filter_price = $product->price;
+            }
+        }
+        foreach ($query->get() as $product) {
+            if ($max_filter_price < $product->price) {
+                $max_filter_price = $product->price;
+            }
+        }
 
         if($request->filled('min_price')) {
             $query->where('price', '>=', $request->min_price);
@@ -141,6 +158,6 @@ class ProductController extends Controller
         $name = 'Results for "' . $query_string . '"';
         $brands = Brand::all();
 
-        return view('category', compact('products', 'name', 'brands'));
+        return view('category', compact('products', 'name', 'brands', 'min_filter_price', 'max_filter_price'));
     }
 }

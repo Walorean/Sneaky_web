@@ -2,14 +2,23 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
+
+
+
     public function run(): void
     {
+        $this->call([
+            RolesAndPermissionsSeeder::class,
+        ]);
+
         DB::table('brands')->insert([
             ['name' => 'Nuke'],
             ['name' => 'Abibas'],
@@ -107,12 +116,13 @@ class DatabaseSeeder extends Seeder
         DB::table('shoes')->insert($shoes);
 
         DB::table('images')->insert([
-            ['product_code' => 'SNK-01',  'color_id' => 1, 'filename' => 'cream_shoes.png'],
-            ['product_code' => 'SNK-01',  'color_id' => 5, 'filename' => 'gray_shoes.png'],
-            ['product_code' => 'SNK-02', 'color_id' => 2, 'filename' => 'black_shoes.png'],
-            ['product_code' => 'SNK-02', 'color_id' => 6, 'filename' => 'blue_shoes.png'],
-            ['product_code' => 'SNK-03',  'color_id' => 3, 'filename' => 'red_shoes.png'],
-            ['product_code' => 'SNK-03',  'color_id' => 9, 'filename' => 'yellow_shoes.png'],
+            ['product_code' => 'SNK-01',  'color_id' => 1, 'filename' => 'shoes/cream_shoes.png'],
+            ['product_code' => 'SNK-01',  'color_id' => 5, 'filename' => 'shoes/gray_shoes.png'],
+            ['product_code' => 'SNK-02', 'color_id' => 2, 'filename' => 'shoes/black_shoes.png'],
+            ['product_code' => 'SNK-02', 'color_id' => 6, 'filename' => 'shoes/blue_shoes.png'],
+            ['product_code' => 'SNK-03',  'color_id' => 3, 'filename' => 'shoes/red_shoes.png'],
+            ['product_code' => 'SNK-03',  'color_id' => 3, 'filename' => 'shoes/swamp_shoes.png'],
+            ['product_code' => 'SNK-03',  'color_id' => 9, 'filename' => 'shoes/yellow_shoes.png'],
         ]);
 
         DB::table('users')->insert([
@@ -131,6 +141,17 @@ class DatabaseSeeder extends Seeder
                 'password'   => Hash::make('password'),
             ],
         ]);
+
+        $admin = User::create([
+            'name' => 'Admin',
+            'surname' => 'User',
+            'phone_num' => '+111111111',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        Role::firstOrCreate(['name' => 'ADMIN']);
+        $admin->assignRole('ADMIN');
 
         DB::table('stores')->insert([
             ['name' => 'Downtown Store',  'address' => '123 Main St, New York, NY'],

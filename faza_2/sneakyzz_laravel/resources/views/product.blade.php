@@ -11,29 +11,25 @@
                     <div class="main-product-card">
                         @if($product->image->isNotEmpty())
                             <div class="image-slider">
-                                <img id="product-photo" src="{{ Vite::asset('resources/assets/' . $selectedImage->filename) }}" alt="{{ $product->name }}">
+                                <img id="product-photo"
+                                     src="{{ asset('storage/' . $selectedImage->filename) }}"
+                                     alt="{{ $product->name }}">
 
-                                <button class="arrow left-arrow"><</button>
-                                <button class="arrow right-arrow">></button>
-
-                                <div class="dots_pr">
-                                    <span class="dot active_dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
+                                @if($product->image->where('color_id', $selectedColor)->count() > 1)
+                                    <button class="arrow left-arrow" onclick="changeProductSlide(-1)"><</button>
+                                    <button class="arrow right-arrow" onclick="changeProductSlide(1)">></button>
+                                    <div class="dots_pr" id="product-dots"></div>
+                                @endif
                             </div>
                         @else
                             <div class="image-slider">
-                                <img id="product-photo" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                                <img id="product-photo" src="" alt="{{ $product->name }}">
 
-                                <button class="arrow left-arrow"><</button>
-                                <button class="arrow right-arrow">></button>
-
-                                <div class="dots_pr">
-                                    <span class="dot active_dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
+                                @if($product->image->where('color_id', $selectedColor)->count() > 1)
+                                    <button class="arrow left-arrow" onclick="changeProductSlide(-1)"><</button>
+                                    <button class="arrow right-arrow" onclick="changeProductSlide(1)">></button>
+                                    <div class="dots_pr" id="product-dots"></div>
+                                @endif
                             </div>
                         @endif
 
@@ -110,22 +106,22 @@
         <section class="catalogue_products">
             <h1>YOU MAY ALSO LIKE:</h1>
             <div class="products_category">
-                @foreach($related_products as $product)
-                    @foreach($product->shoes->unique('color_id') as $shoe)
+                @foreach($related_products as $related)
+                    @foreach($related->shoes->unique('color_id') as $shoe)
                         @php
-                            $image = $product->image->where('color_id', $shoe->color_id)->first();
+                            $image = $related->image->where('color_id', $shoe->color_id)->first();
                         @endphp
-                        <div class="product-card" onclick="window.location='{{ route('product.show', [$product->product_code, $shoe->color_id]) }}'">
+                        <div class="product-card" onclick="window.location='{{ route('product.show', [$related->product_code, $shoe->color_id]) }}'">
                             <div class="product-image-box">
                                 @if($image)
-                                    <img src="{{ Vite::asset('resources/assets/' . $image->filename) }}" alt="{{ $shoe->color->name }}">
+                                    <img src="{{ asset('storage/' . $image->filename) }}" alt="{{ $shoe->color->name }}">
                                 @else
-                                    <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                                    <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $related->name }}">
                                 @endif
                             </div>
                             <div class="product-info">
-                                <div class="product-name">{{ $product->name}}, {{$shoe->color->name}}</div>
-                                <div class="product-price">{{ $product->price }}€</div>
+                                <div class="product-name">{{ $related->name}}, {{$shoe->color->name}}</div>
+                                <div class="product-price">{{ $related->price }}€</div>
                             </div>
                         </div>
                     @endforeach
@@ -135,5 +131,18 @@
     </section>
 @endsection
 @push('scripts')
+    <script>
+        window.productImages = [
+            @foreach(App\Models\Image::where('product_code', $product->product_code)
+                ->where('color_id', $selectedColor)
+                ->get() as $img)
+
+                "{{ asset('storage/' . $img->filename) }}",
+
+            @endforeach
+        ];
+        console.log('productImages:', window.productImages);
+    </script>
+    @vite(['resources/js/product_page_slides.js'])
     @vite(['resources/js/product_page.js'])
 @endpush

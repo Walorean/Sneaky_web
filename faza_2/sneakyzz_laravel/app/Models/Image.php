@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $primaryKey = 'image_id';
-    protected $fillable = ['filename', 'product_code'];
+    protected $fillable = ['filename', 'color_id', 'product_code'];
 
     public function shoes()
     {

@@ -95,7 +95,25 @@ body, html{
     display: block;
 }
 
+#log_out {
+    background: #a60fe9;
+    width:90px;
+    height:50px;
+    border:2px solid #312E33;
+    cursor:pointer;
+    transition: 0.2s;
+    border-radius:8px;
+    margin-left: 10px;
+    color: white;
+    display: flex;           /* ✅ add this */
+    align-items: center;     /* ✅ centers vertically */
+    justify-content: center; /* ✅ centers horizontally */
+    padding: 0;
+}
 
+ #log_out button:hover{
+    background: #ad33ea;
+}
 
 .main_buttons button:hover{
     background: #912cc0;
@@ -132,7 +150,6 @@ body, html{
 }
 
 .hero-ad{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/sneaker_men.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -163,12 +180,18 @@ body, html{
     left:15px;
 }
 
-.dots{
-    position:absolute;
-    bottom:15px;
-    left:50%;
-    display:flex;
-    gap:8px;
+.banner {
+    position: absolute;
+    inset: 0;
+}
+
+.dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%); /* add this line */
+    display: flex;
+    gap: 8px;
 }
 
 .dot{
