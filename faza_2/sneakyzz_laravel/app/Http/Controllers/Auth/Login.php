@@ -34,17 +34,18 @@ class Login extends Controller
                 );
                 app(CartController::class)->mergeSessionCart($cart);
 
-            $user = Auth::user();
+                $user = Auth::user();
 
-            if($user->hasRole('ADMIN')){
-                return redirect()->route('admin.panel');
+                if ($user->hasRole('ADMIN')) {
+                    return redirect()->route('admin.panel');
+                }
+
+                return redirect()->route('my_profile')->with('success', 'Welcome back!');
             }
 
-            return redirect()->route('my_profile')->with('success', 'Welcome back!');
+            return back()
+                ->withErrors(['email' => 'The provided credentials do not match our records.'])
+                ->onlyInput('email');
         }
-
-        return back()
-            ->withErrors(['email' => 'The provided credentials do not match our records.'])
-            ->onlyInput('email');
     }
 }
