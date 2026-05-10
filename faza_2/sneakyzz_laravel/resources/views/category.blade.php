@@ -69,9 +69,19 @@
                         <div class="product-card" onclick="window.location='{{ route('product.show', [$product->product_code, $shoe->color_id]) }}'">
                             <div class="product-image-box">
                                 @if($image)
-                                    <img src="{{ asset('storage/' . $image->filename) }}" alt="{{ $shoe->color->name }}">
+                                    <img
+                                        src="
+                                            {{ str_starts_with($image->filename, 'shoes/')
+                                                ? asset('storage/' . $image->filename)
+                                                : Vite::asset('resources/assets/' . $image->filename)
+                                            }}"
+                                        alt="{{ $shoe->color->name }}"
+                                    >
                                 @else
-                                    <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                                    <img
+                                        src="{{ Vite::asset('resources/assets/black_shoes.png') }}"
+                                        alt="{{ $product->name }}"
+                                    >
                                 @endif
                             </div>
                             <div class="product-info">

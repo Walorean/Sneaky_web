@@ -80,6 +80,10 @@
                                         <button type="button" class="remove_variant_btn">✕</button>
                                     </div>
                                     <div class="variant_body">
+<<<<<<< Updated upstream
+=======
+                                        <input type="hidden" name="variants[{{ $i }}][shoe_id]" value="{{ $shoe->id }}">
+>>>>>>> Stashed changes
                                         <label>Color *</label>
                                         <select name="variants[{{ $i }}][color_id]">
                                             <option value="" disabled>-- choose color --</option>
@@ -105,17 +109,36 @@
                                         @if($shoe->images && $shoe->images->count())
                                             <div class="existing_images_section">
                                                 <label>Current Images</label>
+
                                                 <div class="existing_images_grid">
                                                     @foreach($shoe->images as $img)
                                                         <div class="existing_image_wrap">
-                                                            <img src="{{ Storage::url($img->filename) }}" alt="shoe image" class="preview_image">
+
+                                                            @if($img)
+                                                                @if(str_starts_with($img->filename, 'shoes/'))
+                                                                    <img src="{{ asset('storage/' . $img->filename) }}"
+                                                                         alt="shoe image"
+                                                                         class="preview_image">
+                                                                @else
+                                                                    <img src="{{ Vite::asset('resources/assets/' . $img->filename) }}"
+                                                                         alt="shoe image"
+                                                                         class="preview_image">
+                                                                @endif
+                                                            @else
+                                                                <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}"
+                                                                     alt="shoe image"
+                                                                     class="preview_image">
+                                                            @endif
+
                                                             <label class="delete_img_label">
                                                                 <input type="checkbox" name="delete_images[]" value="{{ $img->image_id }}">
                                                                 Delete
                                                             </label>
+
                                                         </div>
                                                     @endforeach
                                                 </div>
+
                                                 <p class="color_count">Check images to delete them on save.</p>
                                             </div>
                                         @endif

@@ -9,29 +9,38 @@
             <div class="product_main_card">
                 <div class="product_info_section">
                     <div class="main-product-card">
-                        @if($product->image->isNotEmpty())
-                            <div class="image-slider">
+                        @php
+                            $firstImage = $product->image
+                                ->where('color_id', $selectedColor)
+                                ->first();
+                        @endphp
+                        <div class="image-slider">
+                            @if($firstImage)
                                 <img id="product-photo"
-                                     src="{{ asset('storage/' . $selectedImage->filename) }}"
+                                     src="
+                                         {{ str_starts_with($firstImage->filename, 'shoes/')
+                                            ? asset('storage/' . $firstImage->filename)
+                                            : Vite::asset('resources/assets/' . $firstImage->filename)
+                                         }}"
+
                                      alt="{{ $product->name }}">
-
-                                @if($product->image->where('color_id', $selectedColor)->count() > 1)
-                                    <button class="arrow left-arrow" onclick="changeProductSlide(-1)"><</button>
-                                    <button class="arrow right-arrow" onclick="changeProductSlide(1)">></button>
-                                    <div class="dots_pr" id="product-dots"></div>
-                                @endif
-                            </div>
-                        @else
-                            <div class="image-slider">
-                                <img id="product-photo" src="" alt="{{ $product->name }}">
-
-                                @if($product->image->where('color_id', $selectedColor)->count() > 1)
-                                    <button class="arrow left-arrow" onclick="changeProductSlide(-1)"><</button>
-                                    <button class="arrow right-arrow" onclick="changeProductSlide(1)">></button>
-                                    <div class="dots_pr" id="product-dots"></div>
-                                @endif
-                            </div>
-                        @endif
+                            @else
+                                <img id="product-photo"
+                                     src="{{ Vite::asset('resources/assets/black_shoes.png') }}"
+                                     alt="{{ $product->name }}">
+                            @endif
+                            @if($product->image->where('color_id', $selectedColor)->count() > 1)
+                                <button class="arrow left-arrow"
+                                        onclick="changeProductSlide(-1)">
+                                    <
+                                </button>
+                                <button class="arrow right-arrow"
+                                        onclick="changeProductSlide(1)">
+                                    >
+                                </button>
+                                <div class="dots_pr" id="product-dots"></div>
+                            @endif
+                        </div>
 
                         <div class="product-info-right">
                             <div class="product_page_info">
@@ -113,9 +122,19 @@
                         <div class="product-card" onclick="window.location='{{ route('product.show', [$related->product_code, $shoe->color_id]) }}'">
                             <div class="product-image-box">
                                 @if($image)
-                                    <img src="{{ asset('storage/' . $image->filename) }}" alt="{{ $shoe->color->name }}">
+                                    <img
+                                        src="
+                                        {{ str_starts_with($image->filename, 'shoes/')
+                                            ? asset('storage/' . $image->filename)
+                                            : Vite::asset('resources/assets/' . $image->filename)
+                                        }}"
+                                        alt="{{ $shoe->color->name }}"
+                                    >
                                 @else
-                                    <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $related->name }}">
+                                    <img
+                                        src="{{ Vite::asset('resources/assets/black_shoes.png') }}"
+                                        alt="{{ $related->name }}"
+                                    >
                                 @endif
                             </div>
                             <div class="product-info">
@@ -136,7 +155,10 @@
                 ->where('color_id', $selectedColor)
                 ->get() as $img)
 
-                "{{ asset('storage/' . $img->filename) }}",
+                "{{ str_starts_with($img->filename, 'shoes/')
+                    ? asset('storage/' . $img->filename)
+                    : Vite::asset('resources/assets/' . $img->filename)
+                }}",
 
             @endforeach
         ];

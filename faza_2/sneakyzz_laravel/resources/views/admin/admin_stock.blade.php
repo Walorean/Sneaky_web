@@ -34,10 +34,24 @@
                         </div>
 
                         <div class="item_discription_cont">
-                            @if($product->image->isNotEmpty())
-                                <img class="item_img" src="{{ asset('storage/' . $product->image->first()->filename) }}" alt="{{ $product->name }}">
+                            @if($product->image?->first())
+                                @php
+                                    $img = $product->image->first();
+                                @endphp
+
+                                @if(str_starts_with($img->filename, 'shoes/'))
+                                    <img src="{{ asset('storage/' . $img->filename) }}"
+                                         alt="{{ $product->name }}"
+                                         class="item_img">
+                                @else
+                                    <img src="{{ Vite::asset('resources/assets/' . $img->filename) }}"
+                                         alt="{{ $product->name }}"
+                                         class="item_img">
+                                @endif
                             @else
-                                <img class="item_img" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
+                                <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}"
+                                     alt="{{ $product->name }}"
+                                     class="item_img">
                             @endif
                             <div class="item_text">
                                 <h5>{{ $product->name }}</h5>

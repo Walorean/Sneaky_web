@@ -13,7 +13,7 @@
     </div>
     <h1>FOR MEN</h1>
     <section id="men_main">
-        <img id="men_main_picture" src="{{ asset('storage/shoes/sneaker_men.png') }}" alt="">
+        <img id="men_main_picture" src="{{ Vite::asset('resources/assets/sneaker_men.png')}}" alt="">
         <div class="products">
             @foreach($men_products as $product)
                 @php
@@ -23,7 +23,13 @@
                 <div class="product-card" onclick="window.location='{{ route('product.show', [$product->product_code, $shoe?->color_id]) }}'">
                     <div class="product-image-box">
                         @if($image)
-                            <img src="{{ asset('storage/' . $image->filename) }}" alt="{{ $product->name }}">
+                            @if(str_starts_with($image->filename, 'shoes/'))
+                                <img src="{{ asset('storage/' . $image->filename) }}"
+                                     alt="{{ $product->name }}">
+                            @else
+                                <img src="{{ Vite::asset('resources/assets/' . $image->filename) }}"
+                                     alt="{{ $product->name }}">
+                            @endif
                         @else
                             <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
                         @endif
@@ -47,7 +53,13 @@
                 <div class="product-card" onclick="window.location='{{ route('product.show', [$product->product_code, $shoe?->color_id]) }}'">
                     <div class="product-image-box">
                         @if($image)
-                            <img src="{{ asset('storage/' . $image->filename) }}" alt="{{ $product->name }}">
+                            @if(str_starts_with($image->filename, 'shoes/'))
+                                <img src="{{ asset('storage/' . $image->filename) }}"
+                                     alt="{{ $product->name }}">
+                            @else
+                                <img src="{{ Vite::asset('resources/assets/' . $image->filename) }}"
+                                     alt="{{ $product->name }}">
+                            @endif
                         @else
                             <img src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="{{ $product->name }}">
                         @endif
@@ -59,15 +71,15 @@
                 </div>
             @endforeach
         </div>
-        <img id="women_main_picture" src="{{ asset('storage/shoes/sneaker_men.png') }}" alt="">
+        <img id="women_main_picture" src="{{ Vite::asset('resources/assets/sneaker_men.png')}}" alt="">
     </section>
 @endsection
 @push('scripts')
     <script>
         window.sliderImages = [
-            "{{ asset('storage/shoes/sneaker_men.png') }}",
-            "{{ asset('storage/shoes/yellow_shoes.png') }}",
-            "{{ asset('storage/shoes/black_shoes.png') }}",
+            "{{ Vite::asset('resources/assets/sneaker_men.png') }}",
+            "{{ Vite::asset('resources/assets/black_shoes.png') }}",
+            "{{ Vite::asset('resources/assets/yellow_shoes.png') }}",
         ];
     </script>
     @vite(['resources/js/slides.js'])

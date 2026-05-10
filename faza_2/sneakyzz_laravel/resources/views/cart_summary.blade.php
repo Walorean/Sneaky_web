@@ -75,9 +75,16 @@
 
                                     <div class="item_discription_cont">
                                         @if($image)
-                                            <img class="item_img" src="{{ asset('storage/' . $image->filename) }}" alt="{{ $item->shoe->product->name }}">
+                                            <img class="item_img"
+                                                 src="{{ str_starts_with($image->filename, 'shoes/')
+                                                ? asset('storage/' . $image->filename)
+                                                : Vite::asset('resources/assets/' . $image->filename)
+                                             }}"
+                                                 alt="{{ $item->shoe->product->name }}">
                                         @else
-                                            <img class="item_img" src="{{ asset('storage/shoes/black_shoes.png') }}" alt="{{ $item->shoe->product->name }}">
+                                            <img class="item_img"
+                                                 src="{{ Vite::asset('resources/assets/black_shoes.png') }}"
+                                                 alt="{{ $item->shoe->product->name }}">
                                         @endif
                                         <div class="item_text">
                                             <h5>{{ $item->shoe->product->name }}</h5>
@@ -126,9 +133,12 @@
 
                                     <div class="item_discription_cont">
                                         @if($item['image'])
-                                            <img class="item_img"  src="{{ asset('storage/' . $item['image']) }}" alt="{{ $item['product_name'] }}">
+                                            <img class="item_img"  src="{{ str_starts_with($item['image'], 'shoes/')
+                                                 ? asset('storage/' . $item['image'])
+                                                 : Vite::asset('resources/assets/' . $item['image']) }}"
+                                                 alt="{{ $item['product_name'] }}">
                                         @else
-                                            <img class="item_img" src="{{ asset('storage/shoes/black_shoes.png') }}">
+                                            <img class="item_img" src="{{ Vite::asset('resources/assets/black_shoes.png') }}" alt="">
                                         @endif
                                         <div class="item_text">
                                             <h5>{{ $item['product_name'] }}</h5>

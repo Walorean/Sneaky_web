@@ -27,10 +27,6 @@
                     <input type="text" id="phone_num" value="{{ Auth::user()->phone_num }}">
                     <button class="save_change">Save change</button>
                 </div>
-                <div class = "address_box">
-                    <h4>Your orders:</h4>
-                    <button id="open_orders" onclick="location.href='my_orders.html'">Open</button>
-                </div>
             </div>
         </div>
         <div class="profile_r_container">

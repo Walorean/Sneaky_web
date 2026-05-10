@@ -183,6 +183,7 @@ class DatabaseSeeder extends Seeder
         //                   cream_shoes.png, gray_shoes.png, red_shoes.png,
         //                   swamp_shoes.png, yellow_shoes.png
         DB::table('images')->insert([
+<<<<<<< Updated upstream
             // SNK-01 White
             ['product_code' => 'SNK-01', 'color_id' => 1, 'filename' => 'shoes/cream_shoes.png'],
             // SNK-01 Gray
@@ -221,6 +222,15 @@ class DatabaseSeeder extends Seeder
             ['product_code' => 'SNK-08', 'color_id' => 6, 'filename' => 'shoes/blue_shoes.png'],
             // SNK-08 Red
             ['product_code' => 'SNK-08', 'color_id' => 3, 'filename' => 'shoes/red_shoes.png'],
+=======
+            ['product_code' => 'SNK-01',  'color_id' => 1, 'filename' => 'cream_shoes.png'],
+            ['product_code' => 'SNK-01',  'color_id' => 5, 'filename' => 'gray_shoes.png'],
+            ['product_code' => 'SNK-02', 'color_id' => 2, 'filename' => 'black_shoes.png'],
+            ['product_code' => 'SNK-02', 'color_id' => 6, 'filename' => 'blue_shoes.png'],
+            ['product_code' => 'SNK-03',  'color_id' => 3, 'filename' => 'red_shoes.png'],
+            ['product_code' => 'SNK-03',  'color_id' => 3, 'filename' => 'swamp_shoes.png'],
+            ['product_code' => 'SNK-03',  'color_id' => 9, 'filename' => 'yellow_shoes.png'],
+>>>>>>> Stashed changes
         ]);
 
         DB::table('users')->insert([
