@@ -55,3 +55,6 @@ Route::post('/register', [Register::class, 'register'])->name('register.submit')
 Route::post('/login', Login::class )->name('login.submit');
 Route::post('/admin/create-product', [AdminController::class, 'store'])->name('admin.product.store');
 Route::delete('/admin/product/{product_code}', [AdminController::class, 'deleteProduct'])->name('admin.product.delete');
+Route::get('/admin/product/{product_code}/edit', [AdminController::class, 'updateProduct'])->name('admin.product.edit');
+Route::put('/admin/product/{product_code}', [AdminController::class, 'update'])->name('admin.product.update');
+
