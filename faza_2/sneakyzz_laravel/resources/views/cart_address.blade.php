@@ -131,12 +131,7 @@
                     <div class="subtotal_cont">
                         <div class="total_text_cont">
                             <h3>Subtotal:</h3>
-                            <h4>@if(auth()->check())
-                                {{ $items->sum(fn($i) => $i->shoe->product->price * $i->quantity) }} €
-                            @else
-                                {{ collect($items)->sum(fn($i) => $i['price'] * $i['quantity']) }} €
-                            @endif
-                            </h4>
+                            <h4>{{ $total ?? 0 }} €</h4>
                         </div>
                         <div class="step_container">
                             <button type="button" class="next_step"

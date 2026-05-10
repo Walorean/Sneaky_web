@@ -177,6 +177,12 @@
                                 <span>{{ session('checkout.address.street') }} {{ session('checkout.address.street_number') }},{{ session('checkout.address.city') }},{{ session('checkout.address.zip') }}</span>
                             </div>
                         @endif
+                        @if($deliveryFee > 0)
+                            <div class="summary_row">
+                                <span>Delivery fee:</span>
+                                <span>{{ $deliveryFee }} €</span>
+                            </div>
+                        @endif
                         <div class="summary_row">
                             <span>Payment:</span>
                             <span id="payment_method">{{ session('checkout.payment') === 'card' ? 'Card payment' : 'Cash payment' }}</span>

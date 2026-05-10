@@ -143,5 +143,12 @@
             const pickupSelected = document.querySelector('input[name="delivery"][value="pickup"]')?.checked;
             toggleCard(pickupSelected);
         };
+        document.querySelectorAll('input[name="delivery"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                const base = {{ $total ?? 0 }};
+                const fee  = this.value === 'delivery' ? 5 : 0;
+                document.querySelector('.total_text_cont h4').innerText = (base + fee).toFixed(2) + ' €';
+            });
+        });
     </script>
 @endpush

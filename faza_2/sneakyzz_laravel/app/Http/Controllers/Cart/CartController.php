@@ -9,6 +9,7 @@ use App\Models\OrderItem;
 use App\Models\Shoe;
 
 class CartController extends Controller{
+    private const DELIVERY_FEE = 5.00;
     private function getCart()
     {
         if (auth()->check()) {
@@ -156,6 +157,8 @@ class CartController extends Controller{
             ? $this->getCart()->total_price
             : collect(session('cart', []))->sum(fn($item) => $item['price'] * $item['quantity']);
 
+        $deliveryFee = session('checkout.delivery') === 'delivery' ? self::DELIVERY_FEE : 0;
+        $total += $deliveryFee;
         return view('cart_delivery', compact('total'));
     }
 
@@ -189,6 +192,8 @@ class CartController extends Controller{
             $items = session()->get('cart', []);
             $total = collect($items)->sum(fn($i) => $i['price'] * $i['quantity']);
         }
+        $deliveryFee = session('checkout.delivery') === 'delivery' ? self::DELIVERY_FEE : 0;
+        $total += $deliveryFee;
 
         return view('cart_address', compact('items', 'total'));
     }
@@ -226,11 +231,13 @@ class CartController extends Controller{
             $items = session()->get('cart', []);
             $total = collect($items)->sum(fn($i) => $i['price'] * $i['quantity']);
         }
-
+        $deliveryFee = session('checkout.delivery') === 'delivery' ? self::DELIVERY_FEE : 0;
+        $total += $deliveryFee;
         return view('cart_summary', [
             'cart'     => $cart,
             'items'    => $items,
             'total'    => $total,
+            'deliveryFee' => $deliveryFee,
             'checkout' => session('checkout'),
         ]);
     }
@@ -238,12 +245,13 @@ class CartController extends Controller{
     {
         $delivery = session('checkout.delivery');
         $payment  = session('checkout.payment');
-
+        $deliveryFee = $delivery === 'delivery' ? self::DELIVERY_FEE : 0;
         if (auth()->check()) {
             $cart = $this->getCart();
-
+            $total = $cart->total_price + $deliveryFee;
             $cart->update([
                 'status'           => 1,
+                'total_price'      => $total,
                 'payed_by_card'    => $payment === 'card',
                 'deliver_to_store' => $delivery === 'pickup',
                 'address'          => $delivery === 'delivery'
@@ -261,9 +269,10 @@ class CartController extends Controller{
             if (empty($guestItems)) {
                 return redirect()->back()->with('error', 'Your cart is empty.');
             }
-
-            $order = \App\Models\Order::create([
+            $total = collect($guestItems)->sum(fn($i) => $i['price'] * $i['quantity']) + $deliveryFee;
+            $order = Order::create([
                 'status'           => 1,
+                'total_price'      => $total,
                 'payed_by_card'    => $payment === 'card',
                 'deliver_to_store' => $delivery === 'pickup',
                 'address'          => $delivery === 'delivery'
@@ -271,7 +280,6 @@ class CartController extends Controller{
                     : session('checkout.store'),
                 'user_id'          => null,
                 'store_id'         => null,
-                'total_price'      => collect($guestItems)->sum(fn($i) => $i['price'] * $i['quantity']),
                 'user_name'        => null,
                 'user_surname'     => null,
                 'user_phone_num'   => null,
@@ -291,8 +299,10 @@ class CartController extends Controller{
 
         session()->forget('checkout');
 
-        return redirect()->route('home')
+        return redirect()->route('cart.confirmed')
             ->with('success', 'Order successfully created!');
     }
-
+    public function confirmed(){
+        return view('confirm');
+    }
 }
