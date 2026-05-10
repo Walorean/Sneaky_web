@@ -255,13 +255,28 @@ class CartController extends Controller{
                 'payed_by_card'    => $payment === 'card',
                 'deliver_to_store' => $delivery === 'pickup',
                 'address'          => $delivery === 'delivery'
-                    ? implode(', ', session('checkout.address', []))
+                    ? implode(', ', [
+                        session('checkout.address.street'),
+                        session('checkout.address.street_number'),
+                        session('checkout.address.city'),
+                        session('checkout.address.zip'),
+                    ])
                     : session('checkout.store'),
                 'user_name'        => auth()->user()->name,
                 'user_surname'     => auth()->user()->surname,
                 'user_phone_num'   => auth()->user()->phone_num,
                 'user_email'       => auth()->user()->email,
             ]);
+
+            foreach ($cart->orderItems as $item) {
+                if ($item->shoe->stock_quantity < $item->quantity) {
+                    return redirect()->back()->with('error', "Not enough stock for {$item->shoe->product->name}");
+                }
+                $item->shoe->decrement('stock_quantity', $item->quantity);
+                if ($item->shoe->stock_quantity <= 0) {
+                    $item->shoe->update(['is_available' => false]);
+                }
+            }
 
         } else {
             $guestItems = session('cart', []);
@@ -275,8 +290,13 @@ class CartController extends Controller{
                 'total_price'      => $total,
                 'payed_by_card'    => $payment === 'card',
                 'deliver_to_store' => $delivery === 'pickup',
-                'address'          => $delivery === 'delivery'
-                    ? implode(', ', session('checkout.address', []))
+                'address' => $delivery === 'delivery'
+                    ? implode(', ', [
+                        session('checkout.address.street'),
+                        session('checkout.address.street_number'),
+                        session('checkout.address.city'),
+                        session('checkout.address.zip'),
+                    ])
                     : session('checkout.store'),
                 'user_id'          => null,
                 'store_id'         => null,
@@ -287,11 +307,22 @@ class CartController extends Controller{
             ]);
 
             foreach ($guestItems as $item) {
+                $shoe = Shoe::findOrFail($item['shoe_id']);
+                if ($shoe->stock_quantity < $item['quantity']) {
+                    return redirect()->back()->with('error', "Not enough stock for {$shoe->product->name}");
+                }
                 $order->orderItems()->create([
                     'shoe_id'  => $item['shoe_id'],
                     'quantity' => $item['quantity'],
                     'price'    => $item['price'],
                 ]);
+                $shoe->decrement('stock_quantity', $item['quantity']);
+                $shoe->refresh();
+                if ($shoe->stock_quantity <= 0) {
+                    $shoe->update([
+                        'is_available' => false
+                    ]);
+                }
             }
 
             session()->forget('cart');

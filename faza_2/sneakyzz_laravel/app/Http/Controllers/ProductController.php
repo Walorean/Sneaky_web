@@ -129,6 +129,7 @@ class ProductController extends Controller
                 $min_filter_price = $product->price;
             }
         }
+
         foreach ($query->get() as $product) {
             if ($max_filter_price < $product->price) {
                 $max_filter_price = $product->price;
