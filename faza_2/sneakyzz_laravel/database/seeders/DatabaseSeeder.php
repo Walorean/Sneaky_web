@@ -183,54 +183,44 @@ class DatabaseSeeder extends Seeder
         //                   cream_shoes.png, gray_shoes.png, red_shoes.png,
         //                   swamp_shoes.png, yellow_shoes.png
         DB::table('images')->insert([
-<<<<<<< Updated upstream
             // SNK-01 White
-            ['product_code' => 'SNK-01', 'color_id' => 1, 'filename' => 'shoes/cream_shoes.png'],
+            ['product_code' => 'SNK-01', 'color_id' => 1, 'filename' => 'cream_shoes.png'],
             // SNK-01 Gray
-            ['product_code' => 'SNK-01', 'color_id' => 5, 'filename' => 'shoes/gray_shoes.png'],
-            ['product_code' => 'SNK-01', 'color_id' => 5, 'filename' => 'shoes/swamp_shoes.png'],
+            ['product_code' => 'SNK-01', 'color_id' => 5, 'filename' => 'gray_shoes.png'],
+            ['product_code' => 'SNK-01', 'color_id' => 5, 'filename' => 'swamp_shoes.png'],
             // SNK-02 Black
-            ['product_code' => 'SNK-02', 'color_id' => 2, 'filename' => 'shoes/black_shoes.png'],
-            ['product_code' => 'SNK-02', 'color_id' => 2, 'filename' => 'shoes/black_var2.png'],
-            // SNK-02 Blue
-            ['product_code' => 'SNK-02', 'color_id' => 6, 'filename' => 'shoes/blue_shoes.png'],
-            // SNK-03 Red
-            ['product_code' => 'SNK-03', 'color_id' => 3, 'filename' => 'shoes/red_shoes.png'],
-            ['product_code' => 'SNK-03', 'color_id' => 3, 'filename' => 'shoes/swamp_shoes.png'],
-            // SNK-03 Yellow
-            ['product_code' => 'SNK-03', 'color_id' => 9, 'filename' => 'shoes/yellow_shoes.png'],
-            // SNK-04 White
-            ['product_code' => 'SNK-04', 'color_id' => 1, 'filename' => 'shoes/cream_shoes.png'],
-            // SNK-04 Black
-            ['product_code' => 'SNK-04', 'color_id' => 2, 'filename' => 'shoes/black_shoes.png'],
-            ['product_code' => 'SNK-04', 'color_id' => 2, 'filename' => 'shoes/black_var2.png'],
-            // SNK-05 White
-            ['product_code' => 'SNK-05', 'color_id' => 1, 'filename' => 'shoes/cream_shoes.png'],
-            // SNK-05 Gray
-            ['product_code' => 'SNK-05', 'color_id' => 5, 'filename' => 'shoes/gray_shoes.png'],
-            // SNK-06 Gray
-            ['product_code' => 'SNK-06', 'color_id' => 5, 'filename' => 'shoes/gray_shoes.png'],
-            ['product_code' => 'SNK-06', 'color_id' => 5, 'filename' => 'shoes/swamp_shoes.png'],
-            // SNK-06 Red
-            ['product_code' => 'SNK-06', 'color_id' => 3, 'filename' => 'shoes/red_shoes.png'],
-            // SNK-07 Black
-            ['product_code' => 'SNK-07', 'color_id' => 2, 'filename' => 'shoes/black_shoes.png'],
-            ['product_code' => 'SNK-07', 'color_id' => 2, 'filename' => 'shoes/black_var2.png'],
-            // SNK-07 Yellow
-            ['product_code' => 'SNK-07', 'color_id' => 9, 'filename' => 'shoes/yellow_shoes.png'],
-            // SNK-08 Blue
-            ['product_code' => 'SNK-08', 'color_id' => 6, 'filename' => 'shoes/blue_shoes.png'],
-            // SNK-08 Red
-            ['product_code' => 'SNK-08', 'color_id' => 3, 'filename' => 'shoes/red_shoes.png'],
-=======
-            ['product_code' => 'SNK-01',  'color_id' => 1, 'filename' => 'cream_shoes.png'],
-            ['product_code' => 'SNK-01',  'color_id' => 5, 'filename' => 'gray_shoes.png'],
             ['product_code' => 'SNK-02', 'color_id' => 2, 'filename' => 'black_shoes.png'],
+            ['product_code' => 'SNK-02', 'color_id' => 2, 'filename' => 'black_var2.png'],
+            // SNK-02 Blue
             ['product_code' => 'SNK-02', 'color_id' => 6, 'filename' => 'blue_shoes.png'],
-            ['product_code' => 'SNK-03',  'color_id' => 3, 'filename' => 'red_shoes.png'],
-            ['product_code' => 'SNK-03',  'color_id' => 3, 'filename' => 'swamp_shoes.png'],
-            ['product_code' => 'SNK-03',  'color_id' => 9, 'filename' => 'yellow_shoes.png'],
->>>>>>> Stashed changes
+            // SNK-03 Red
+            ['product_code' => 'SNK-03', 'color_id' => 3, 'filename' => 'red_shoes.png'],
+            ['product_code' => 'SNK-03', 'color_id' => 3, 'filename' => 'swamp_shoes.png'],
+            // SNK-03 Yellow
+            ['product_code' => 'SNK-03', 'color_id' => 9, 'filename' => 'yellow_shoes.png'],
+            // SNK-04 White
+            ['product_code' => 'SNK-04', 'color_id' => 1, 'filename' => 'cream_shoes.png'],
+            // SNK-04 Black
+            ['product_code' => 'SNK-04', 'color_id' => 2, 'filename' => 'black_shoes.png'],
+            ['product_code' => 'SNK-04', 'color_id' => 2, 'filename' => 'black_var2.png'],
+            // SNK-05 White
+            ['product_code' => 'SNK-05', 'color_id' => 1, 'filename' => 'cream_shoes.png'],
+            // SNK-05 Gray
+            ['product_code' => 'SNK-05', 'color_id' => 5, 'filename' => 'gray_shoes.png'],
+            // SNK-06 Gray
+            ['product_code' => 'SNK-06', 'color_id' => 5, 'filename' => 'gray_shoes.png'],
+            ['product_code' => 'SNK-06', 'color_id' => 5, 'filename' => 'swamp_shoes.png'],
+            // SNK-06 Red
+            ['product_code' => 'SNK-06', 'color_id' => 3, 'filename' => 'red_shoes.png'],
+            // SNK-07 Black
+            ['product_code' => 'SNK-07', 'color_id' => 2, 'filename' => 'black_shoes.png'],
+            ['product_code' => 'SNK-07', 'color_id' => 2, 'filename' => 'black_var2.png'],
+            // SNK-07 Yellow
+            ['product_code' => 'SNK-07', 'color_id' => 9, 'filename' => 'yellow_shoes.png'],
+            // SNK-08 Blue
+            ['product_code' => 'SNK-08', 'color_id' => 6, 'filename' => 'blue_shoes.png'],
+            // SNK-08 Red
+            ['product_code' => 'SNK-08', 'color_id' => 3, 'filename' => 'red_shoes.png'],
         ]);
 
         DB::table('users')->insert([

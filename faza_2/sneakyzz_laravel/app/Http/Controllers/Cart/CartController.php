@@ -299,10 +299,10 @@ class CartController extends Controller{
 
         session()->forget('checkout');
 
-        return redirect()->route('cart.confirmed')
+        return redirect()->route('cart.finish')
             ->with('success', 'Order successfully created!');
     }
-    public function confirmed(){
-        return view('confirm');
+    public function finish(){
+        return view('cart_confirm');
     }
 }
