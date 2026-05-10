@@ -138,7 +138,6 @@
         function toggleCard(show) {
             document.getElementById("cardForm").style.display = show ? "block" : "none";
         }
-
         window.onload = function () {
             const pickupSelected = document.querySelector('input[name="delivery"][value="pickup"]')?.checked;
             toggleCard(pickupSelected);

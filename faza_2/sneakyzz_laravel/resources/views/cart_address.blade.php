@@ -94,7 +94,6 @@
                         </div>
 
                     @else
-                        {{-- Pickup -- opýtaj sa len na osobné údaje --}}
                         <div class="input_part">
                             <div class="card">
                                 <div class="a_box">
@@ -121,7 +120,6 @@
                                 </div>
                             </div>
                         </div>
-
                         @if(session('checkout.store'))
                             <div class="card" style="padding: 1rem; margin-top: 1rem;">
                                 <p>Pickup location: <strong>{{ session('checkout.store') }}</strong></p>
