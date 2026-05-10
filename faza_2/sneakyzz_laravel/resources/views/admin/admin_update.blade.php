@@ -80,8 +80,6 @@
                                         <button type="button" class="remove_variant_btn">✕</button>
                                     </div>
                                     <div class="variant_body">
-                                        <input type="hidden" name="variants[{{ $i }}][shoe_id]" value="{{ $shoe->id }}">
-                                               value="{{ $shoe->shoe_id }}">
                                         <label>Color *</label>
                                         <select name="variants[{{ $i }}][color_id]">
                                             <option value="" disabled>-- choose color --</option>
