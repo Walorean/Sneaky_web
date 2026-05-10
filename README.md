@@ -7,6 +7,10 @@ Before running generate a seed file:
 ```bash
 php artisan migrate:fresh --seed
 ```
+Link the storage where newly created images for a products will apear
+```bash
+php artisan storage:link
+```
 After you can run an application by entering:
 ```bash
 composer run dev
