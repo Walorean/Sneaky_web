@@ -54,7 +54,7 @@
                     @if(auth()->check())
                         @forelse($items as $item)
                             @php
-                                $image = $item->shoe->images->where('color_id', $item->shoe->color_id)->first();
+                                $image = $item->shoe->images->first();
                             @endphp
                             <div class="cart_item_cont">
                                 <div class="quantity_cont">
@@ -74,9 +74,16 @@
 
                                 <div class="item_discription_cont">
                                     @if($image)
-                                        <img class="item_img" src="{{ asset('storage/' . $image->filename) }}" alt="{{ $item->shoe->product->name }}">
+                                        <img class="item_img"
+                                             src="{{ str_starts_with($image->filename, 'shoes/')
+                                                ? asset('storage/' . $image->filename)
+                                                : Vite::asset('resources/assets/' . $image->filename)
+                                             }}"
+                                             alt="{{ $item->shoe->product->name }}">
                                     @else
-                                        <img class="item_img" src="{{ asset('storage/shoes/black_shoes.png') }}" alt="{{ $item->shoe->product->name }}">
+                                        <img class="item_img"
+                                             src="{{ Vite::asset('resources/assets/black_shoes.png') }}"
+                                             alt="{{ $item->shoe->product->name }}">
                                     @endif
                                     <div class="item_text">
                                         <h5>{{ $item->shoe->product->name }}</h5>
