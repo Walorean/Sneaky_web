@@ -80,10 +80,7 @@
                                         <button type="button" class="remove_variant_btn">✕</button>
                                     </div>
                                     <div class="variant_body">
-<<<<<<< Updated upstream
-=======
                                         <input type="hidden" name="variants[{{ $i }}][shoe_id]" value="{{ $shoe->id }}">
->>>>>>> Stashed changes
                                         <label>Color *</label>
                                         <select name="variants[{{ $i }}][color_id]">
                                             <option value="" disabled>-- choose color --</option>

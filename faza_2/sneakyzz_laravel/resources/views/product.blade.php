@@ -115,19 +115,23 @@
             <h1>YOU MAY ALSO LIKE:</h1>
             <div class="products_category">
                 @foreach($related_products as $related)
-                    @foreach($related->shoes->unique('color_id') as $shoe)
-                        @php
-                            $image = $related->image->where('color_id', $shoe->color_id)->first();
-                        @endphp
-                        <div class="product-card" onclick="window.location='{{ route('product.show', [$related->product_code, $shoe->color_id]) }}'">
+
+                    @php
+                        $shoe = $related->shoes->first();
+                        $image = $related->image->where('color_id', $shoe?->color_id)->first();
+                    @endphp
+
+                    @if($shoe)
+                        <div class="product-card"
+                             onclick="window.location='{{ route('product.show', [$related->product_code, $shoe->color_id]) }}'">
+
                             <div class="product-image-box">
                                 @if($image)
                                     <img
-                                        src="
-                                        {{ str_starts_with($image->filename, 'shoes/')
-                                            ? asset('storage/' . $image->filename)
-                                            : Vite::asset('resources/assets/' . $image->filename)
-                                        }}"
+                                        src="{{ str_starts_with($image->filename, 'shoes/')
+                                ? asset('storage/' . $image->filename)
+                                : Vite::asset('resources/assets/' . $image->filename)
+                            }}"
                                         alt="{{ $shoe->color->name }}"
                                     >
                                 @else
@@ -137,12 +141,19 @@
                                     >
                                 @endif
                             </div>
+
                             <div class="product-info">
-                                <div class="product-name">{{ $related->name}}, {{$shoe->color->name}}</div>
-                                <div class="product-price">{{ $related->price }}€</div>
+                                <div class="product-name">
+                                    {{ $related->name }}, {{ $shoe->color->name }}
+                                </div>
+                                <div class="product-price">
+                                    {{ $related->price }}€
+                                </div>
                             </div>
+
                         </div>
-                    @endforeach
+                    @endif
+
                 @endforeach
             </div>
         </section>
