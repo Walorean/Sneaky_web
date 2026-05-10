@@ -23,8 +23,7 @@
                 @forelse($products as $product)
                     <div class="cart_item_cont">
                         <div class="quantity_cont">
-                            <button class="edit_item" title="Edit"> ✏️ </button>
-
+                            <button class="edit_item" title="Edit"  onclick="window.location='{{ route('admin.product.edit', $product->product_code) }}'">✏️</button>
                             <form method="POST"
                                   action="{{ route('admin.product.delete', $product->product_code) }}"
                                   onsubmit="return confirm('Are you sure you want to delete {{$product->name}}?')">

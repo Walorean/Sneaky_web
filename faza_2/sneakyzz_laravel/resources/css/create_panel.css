@@ -325,7 +325,59 @@ body {
     flex-direction: column;
     gap: 5px;
 }
+.existing_images_section {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 
+.existing_images_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.existing_image_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.delete_img_label {
+    font-size: 11px;
+    color: #c0392b;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete_img_label input[type="checkbox"] {
+    accent-color: #c0392b;
+    cursor: pointer;
+}
+.success_message {
+    margin-top: 12px;
+    padding: 10px 16px;
+    background: #e6f9ee;
+    border: 1px solid #27ae60;
+    border-radius: 6px;
+    color: #1e8449;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.error_messages {
+    margin-top: 12px;
+    padding: 10px 16px;
+    background: #fdecea;
+    border: 1px solid #e74c3c;
+    border-radius: 6px;
+}
 
 @media (max-width: 700px) {
     .admin_form_container {
