@@ -29,7 +29,7 @@
                                 <option value="{{ $cat->category_id }}">{{ $cat->name }}</option>
                             @endforeach
                         </select>
-                        <p class="color_count">Hold Ctrl/Cmd to select multiple</p>
+                        <p class="color_count">Hold Ctrl to select multiple</p>
                     </div>
                     <div class="form_field">
                         <label>Brand *</label>

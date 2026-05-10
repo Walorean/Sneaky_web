@@ -37,7 +37,6 @@
                             <div class="product_page_info">
                                 <div class="product_header">
                                     <h2>{{ $product->name }}</h2>
-                                    <button id="liked-btn"></button>
                                 </div>
                                 <p id="basic-info"><strong>Basic information: </strong>{{ $product->basic_info }}</p>
                                 <p id="material-info"><strong>Material: </strong>{{ $product->material }}</p>

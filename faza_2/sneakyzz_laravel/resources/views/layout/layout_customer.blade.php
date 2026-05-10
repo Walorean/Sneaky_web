@@ -15,7 +15,6 @@
         <button type="submit" id="search_button">🔍</button>
     </form>
     <div class="main_buttons">
-        <button id="likes" onclick="location.href='liked_page.html'"><img src="{{ Vite::asset('resources/assets/like.png') }}" alt="LikedPageImage"></button>
         <button id="cart" onclick="window.location='{{ route('cart') }}'"><img src="{{ Vite::asset('resources/assets/cart.png') }}" alt="CartPageImage"></button>
         @auth
             <button id="my_profile" onclick="window.location='{{ route('my_profile') }}'"><img src="{{ Vite::asset('resources/assets/profile.png') }}" alt="ProfilePageImage"></button>
